@@ -1,0 +1,18 @@
+{
+  "instructions": "Replace this text with the scientific task, necessary context, and operational instructions.",
+  "input": [],
+  "submission": {
+    "artifacts": [
+      {
+        "path": "submission.json",
+        "format": "json",
+        "description": "Replace this text with the required artifact contents and format.",
+        "has_template": false
+      }
+    ]
+  },
+  "environment": [],
+  "custom_environment": [],
+  "requirement": [],
+  "limitation": {}
+}
