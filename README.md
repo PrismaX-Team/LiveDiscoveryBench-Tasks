@@ -1,46 +1,44 @@
 # LiveDiscoveryBench Tasks
 
-Public task-contribution repository for [LiveDiscoveryBench](https://github.com/PrismaX-Team/LiveDiscoveryBench).
+Task contribution repository for LiveDiscoveryBench. / LiveDiscoveryBench 任务共建仓库。
 
-This repository accepts task packages only after the corresponding Proposal has been approved for PR. Proposal approval allows a pull request; it does not mean that the task has passed final scientific review, been merged, or been formally published.
+## Contribute / 参与共建
 
-LiveDiscoveryBench 正式任务的公开共建仓库。
+| PR purpose / 用途 | Label / 标签 | Required link / 关联信息 |
+| --- | --- | --- |
+| New task / 新增任务 | `type:new-task` | Approved Proposal ID and detail URL / 获批 Proposal 编号及详情链接 |
+| Task fix / 任务修复 | `type:task-fix` | Existing task ID and problem / 已有任务 ID 及问题 |
+| Repository maintenance / 仓库维护 | `type:maintenance` | Maintenance scope; no Proposal / 维护范围，无需 Proposal |
 
-本仓库只接收已经获准进入 PR 阶段的 Proposal。Proposal 获准仅表示可以提交 PR，不代表任务已经通过最终科学审核、已经合并或已经正式发布。
+Classify by the change, not the author's role. Maintainers adding tasks also need approved Proposals. Choose a [PR template](CONTRIBUTING.md#templates); a maintainer confirms exactly one type label.
 
-## Task package contract / 任务包合同
+按改动用途而非作者身份分类；管理员新增任务也需获批 Proposal。选择 [PR 模板](CONTRIBUTING.md#templates)，由维护者确认唯一类型标签。
 
-Each task lives at `tasks/<task-id>/` and contains exactly five top-level parts:
-
-每个任务位于 `tasks/<task-id>/`，顶层只包含以下五部分：
+## Task package / 任务包
 
 ```text
 tasks/<task-id>/
 ├── instruction.json
 ├── input/
 ├── environment/
+│   └── environment.json
 ├── verifier/
-│   └── run/
-│       └── main.py
+│   ├── validation/run/main.py
+│   └── test/run/main.py
 └── meta.json
 ```
 
-- `instruction.json` describes the task, Agent-visible inputs, required submission artifacts, the supplied environment, hard requirements, and confirmed resource limits.
-- `input/` contains only data and optional submission templates visible to the Agent.
-- `environment/` contains files that construct or prepare the task-specific initial environment; it may be empty.
-- `verifier/` contains the fixed, offline, deterministic verifier and any scoring material it owns. Its required entry is `verifier/run/main.py`.
-- `meta.json` is the concise task index: identity, domain, immutable construction source, stable data sources, raw metric, optional Matrix transform, and optional measured baseline.
+- `instruction.json`: task instructions, visible inputs, final artifacts, supplied environment, requirements and confirmed limits. / 任务说明、可见输入、最终产物、已提供环境、要求与已确认上限。
+- `input/`: Agent-visible data and submission templates only. / 仅放 Agent 可见数据及提交模板。
+- `environment/environment.json`: required executable environment contract (`default` or `containerfile`). / 必需的可执行环境合同。
+- `verifier/validation/run/main.py`: research feedback via `--input`, `--request`, `--response`. / 研究期间反馈入口。
+- `verifier/test/run/main.py`: frozen-submission scoring via `--input`, `--submission`, `--result`. / 冻结提交后的最终评分入口。
+- `meta.json`: task identity, immutable construction source, data sources, raw metric, optional conversion and measured baseline. / 任务身份、不可变构造来源、数据来源、原始指标及可选转换与实测 baseline。
 
-- `instruction.json` 描述任务、Agent 可见输入、必须提交的产物、已提供环境、硬约束和已经确认的资源限制。
-- `input/` 只保存 Agent 可见的数据和可选提交模板。
-- `environment/` 保存构建或准备任务专用初始环境的文件；没有专用环境时可以为空。
-- `verifier/` 保存固定、离线、确定性的 Verifier 及其自行管理的评分材料；固定入口为 `verifier/run/main.py`。
-- `meta.json` 是任务简洁索引，记录身份、领域、不可变构造来源、稳定数据来源、原始指标、可选 Matrix 变换和可选实测 baseline。
+Exactly five top-level parts. Keep build history, baseline implementations and review reports outside the package. Both verifier entries are required; `verifier/run/main.py` is obsolete. The framework supplies the shared run-local `VerifyContext`; this repository does not provide an evaluation runtime.
 
-Baselines, construction histories, review records, tests, and the full body of source evidence are maintained outside the five-part formal package. A package being present in this repository is not, by itself, evidence of scientific admission or runtime readiness.
+顶层严格五部分；构造历史、baseline 实现及审核报告放在包外。双入口均必需，旧 `verifier/run/main.py` 不再使用。共享的 Run-local `VerifyContext` 由框架提供，本仓库不提供评测运行环境。
 
-Baseline、构造历史、审核记录、测试和完整来源证据在五部分正式包之外独立维护。任务包出现在本仓库本身，不等于它已经科学准入或能够稳定运行。
+Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. CI checks structure only, never executes task code, and does not establish scientific approval or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. The automated workflow performs read-only structural and JSON syntax checks only. It never installs task dependencies, runs a Verifier, extracts archives, or executes code supplied by a pull request.
-
-提交 PR 前请阅读 [CONTRIBUTING.md](CONTRIBUTING.md)。自动工作流只进行只读结构检查和 JSON 语法解析；它不会安装任务依赖、运行 Verifier、解压归档，或执行 PR 提供的任何代码。
+复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器；CI 仅检查结构，不执行任务代码，不代表科学准入或可运行性。详见[共建指南](CONTRIBUTING.md)。

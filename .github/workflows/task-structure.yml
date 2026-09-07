@@ -2,9 +2,10 @@ name: Validate task package structure
 
 on:
   pull_request:
-    paths:
-      - "tasks/**"
-      - ".github/workflows/task-structure.yml"
+    types: [opened, synchronize, reopened, labeled, unlabeled, edited]
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -15,91 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - name: Check out pull request
+      # Execute base-branch policy, never a checker supplied by the PR.
+      - name: Check out trusted policy
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          ref: ${{ github.event.pull_request.base.sha || github.sha }}
+          path: policy
+          persist-credentials: false
+      - name: Check out candidate as data
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: candidate
           fetch-depth: 0
           persist-credentials: false
-
-      - name: Validate changed task packages without executing them
-        shell: bash
+      - name: Test trusted checker
+        run: python3 -I policy/.github/scripts/test_task_structure.py
+      - name: Validate candidate without running task code
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
-        run: |
-          python3 - <<'PY'
-          import json
-          import os
-          from pathlib import Path
-          import subprocess
-          import sys
-
-          changed = subprocess.run(
-              ["git", "diff", "--name-only", "--diff-filter=ACMRT", os.environ["BASE_SHA"], "HEAD"],
-              check=True,
-              capture_output=True,
-              text=True,
-          ).stdout.splitlines()
-
-          task_roots = sorted({
-              "/".join(Path(path).parts[:2])
-              for path in changed
-              if len(Path(path).parts) >= 3
-              and Path(path).parts[0] == "tasks"
-              and Path(path).parts[1] != "_template"
-          })
-
-          if not task_roots:
-              print("No task package changed; nothing to validate.")
-              raise SystemExit(0)
-
-          if len(task_roots) != 1:
-              print("A pull request must change exactly one task package:", *task_roots, sep="\n- ")
-              raise SystemExit(1)
-
-          root = Path(task_roots[0])
-          expected = {"instruction.json", "input", "environment", "verifier", "meta.json"}
-          errors = []
-
-          if not root.is_dir() or root.is_symlink():
-              errors.append(f"{root} must be a real directory")
-          else:
-              actual = {child.name for child in root.iterdir()}
-              missing = sorted(expected - actual)
-              extra = sorted(actual - expected)
-              if missing:
-                  errors.append("missing top-level paths: " + ", ".join(missing))
-              if extra:
-                  errors.append("unexpected top-level paths: " + ", ".join(extra))
-
-              for directory in (root / "input", root / "environment", root / "verifier", root / "verifier" / "run"):
-                  if not directory.is_dir() or directory.is_symlink():
-                      errors.append(f"{directory} must be a real directory")
-
-              for path in root.rglob("*"):
-                  if path.is_symlink():
-                      errors.append(f"symbolic links are not allowed: {path}")
-
-              for filename in ("instruction.json", "meta.json"):
-                  path = root / filename
-                  if not path.is_file() or path.is_symlink():
-                      errors.append(f"{path} must be a regular file")
-                      continue
-                  try:
-                      value = json.loads(path.read_text(encoding="utf-8"))
-                      if not isinstance(value, dict):
-                          errors.append(f"{path} must contain a JSON object")
-                  except (OSError, UnicodeError, json.JSONDecodeError) as error:
-                      errors.append(f"{path} is not valid UTF-8 JSON: {error}")
-
-              entry = root / "verifier" / "run" / "main.py"
-              if not entry.is_file() or entry.is_symlink():
-                  errors.append(f"{entry} must be a regular file")
-              elif entry.stat().st_size == 0:
-                  errors.append(f"{entry} must not be empty")
-
-          if errors:
-              print("Task package validation failed:", *errors, sep="\n- ")
-              raise SystemExit(1)
-
-          print(f"Validated {root} without installing dependencies or executing task code.")
-          PY
+        run: python3 -I policy/.github/scripts/task_structure.py candidate

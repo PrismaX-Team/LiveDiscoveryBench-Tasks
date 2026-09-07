@@ -7,12 +7,11 @@
         "path": "submission.json",
         "format": "json",
         "description": "Replace this text with the required artifact contents and format.",
-        "has_template": false
+        "has_template": true
       }
     ]
   },
   "environment": [],
-  "custom_environment": [],
   "requirement": [],
   "limitation": {}
 }
