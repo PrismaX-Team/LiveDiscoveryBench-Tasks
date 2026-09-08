@@ -1,17 +1,13 @@
 ## New task / 新增任务
 
-Type label / 类型标签: `type:new-task` (maintainer confirms / 维护者确认)
+Proposal: https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/NUMBER
 
-- Approved Proposal ID / 获批 Proposal 编号:
-- Proposal detail URL (private) / Proposal 详情链接（私有）:
-- Task ID and domain / 任务 ID 与领域:
-- Immutable construction source (`meta.json.source_id`) / 不可变构造来源:
-- Raw metric and direction / 原始指标与优劣方向:
-- Data sources and redistribution permissions / 数据来源与再分发权限:
-- Validation/Test verification evidence / 双入口验证依据:
+Use your own currently approved Proposal. Editing the approved content invalidates approval. / 必须关联本人当前有效获批的 Proposal；修改获批内容须重新批准。
 
-- [ ] The Proposal is approved and this task matches it. / 提案已批准，任务内容与之对应。
-- [ ] One five-part package, including environment.json and both verifier entries. / 仅一个五部分包，含环境声明与双入口。
-- [ ] No secrets, personal data, restricted or unauthorized materials. / 无 Secret、个人信息、受限或未授权材料。
+### Implementation / 实现说明
 
-After creating the PR, bind its URL on the approved Proposal page. / 创建 PR 后回到获批 Proposal 页面绑定链接。
+Describe the task package, validation evidence and scientific scope. / 说明任务包、验证证据及科学范围。
+
+### Review / 审核
+
+A maintainer sets `type:new-task` and comments `/reviewers domain=@LOGIN technical=@LOGIN`. Both distinct reviewers must approve the current commit using GitHub Review. / 维护者确认类型并指定两位不同且非作者的审核者；两席须通过 GitHub Review 批准当前提交。

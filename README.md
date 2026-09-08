@@ -2,11 +2,13 @@
 
 Task contribution repository for LiveDiscoveryBench. / LiveDiscoveryBench 任务共建仓库。
 
+[Official portal / 官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/) · [Submit Proposal / 提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
+
 ## Contribute / 参与共建
 
 | PR purpose / 用途 | Label / 标签 | Required link / 关联信息 |
 | --- | --- | --- |
-| New task / 新增任务 | `type:new-task` | Approved Proposal ID and detail URL / 获批 Proposal 编号及详情链接 |
+| New task / 新增任务 | `type:new-task` | Currently approved public Discussion URL / 当前有效获批的公开 Discussion 链接 |
 | Task fix / 任务修复 | `type:task-fix` | Existing task ID and problem / 已有任务 ID 及问题 |
 | Repository maintenance / 仓库维护 | `type:maintenance` | Maintenance scope; no Proposal / 维护范围，无需 Proposal |
 
@@ -39,6 +41,6 @@ Exactly five top-level parts. Keep build history, baseline implementations and r
 
 顶层严格五部分；构造历史、baseline 实现及审核报告放在包外。双入口均必需，旧 `verifier/run/main.py` 不再使用。共享的 Run-local `VerifyContext` 由框架提供，本仓库不提供评测运行环境。
 
-Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. CI checks structure only, never executes task code, and does not establish scientific approval or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. The trusted gate checks structure, Proposal approval and current dual reviews without executing task code; it does not establish scientific validity or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器；CI 仅检查结构，不执行任务代码，不代表科学准入或可运行性。详见[共建指南](CONTRIBUTING.md)。
+复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器；可信检查器校验结构、Proposal 批准和当前双审，不执行任务代码，不代表科学有效性或可运行性。详见[共建指南](CONTRIBUTING.md)。

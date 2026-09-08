@@ -1,0 +1,12 @@
+# Review events run in a PR context. This relay has no write permissions and
+# passes no artifacts or commands to the privileged default-branch workflow.
+name: Review event relay
+on:
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+permissions: {}
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Review changed; the trusted policy will reload live GitHub state.'

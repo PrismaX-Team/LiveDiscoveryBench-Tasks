@@ -1,0 +1,313 @@
+{
+  "title": "[Proposal] ",
+  "labels": [
+    "proposal:submitted"
+  ],
+  "body": [
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "# LiveDiscoveryBench Proposal\nYour GitHub account identifies the author. The body, links and comments are public. Do not submit private email addresses, sensitive information or materials you cannot publish. / 作者身份以 GitHub 账号为准。正文、链接和评论均会公开；请勿提交私人邮箱、敏感信息或无权公开的材料。"
+      }
+    },
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "## 01 Contributor information / 贡献者信息\nYour GitHub identity and professional background. / 确认 GitHub 身份并提供专业背景。"
+      }
+    },
+    {
+      "type": "input",
+      "id": "fullName",
+      "attributes": {
+        "label": "Name / 姓名",
+        "placeholder": "Your name for contribution credit / 用于贡献署名的姓名"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "input",
+      "id": "institution",
+      "attributes": {
+        "label": "Institution / 机构",
+        "placeholder": "University, company or research group / 所在大学、公司或研究团队"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "input",
+      "id": "position",
+      "attributes": {
+        "label": "Position / 职位",
+        "placeholder": "For example: PhD student or research engineer / 例如：博士生、研究员或研究工程师"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "input",
+      "id": "professionalUrl",
+      "attributes": {
+        "label": "Academic or professional profile / 学术或职业主页",
+        "placeholder": "https:// — profile or ORCID / https:// 学术或职业主页"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "relevantExperience",
+      "attributes": {
+        "label": "Relevant experience / 相关经历",
+        "placeholder": "Briefly describe research or engineering experience related to this question. / 简述与本题有关的研究、实验或工程经历。"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "## 02 Scientific question / 科学问题\nEvidence that the question is important, unresolved and has measurable headroom. / 说明问题为何重要、为何仍未解决，以及可衡量的前沿空间。"
+      }
+    },
+    {
+      "type": "input",
+      "id": "title",
+      "attributes": {
+        "label": "Task title / 任务标题",
+        "placeholder": "For example: protein mutation screening under a limited experimental budget / 例如：有限实验预算下的蛋白稳定性突变筛选"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "input",
+      "id": "domain",
+      "attributes": {
+        "label": "Scientific domain / 科学领域",
+        "placeholder": "For example: protein engineering or materials science / 例如：蛋白工程、材料科学"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "scientificQuestion",
+      "attributes": {
+        "label": "Scientific question / 科学问题",
+        "placeholder": "What specific scientific question should be advanced? For example: finding stabilizing protein mutations under a limited experimental budget. / 具体要推进什么科学问题？例如：如何在有限实验预算下找到更稳定的蛋白突变。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "importance",
+      "attributes": {
+        "label": "Why it matters / 科学重要性",
+        "placeholder": "Why is this question worth solving? Describe its scientific or practical value. / 为什么这个问题值得解决？说明它的科学意义或实际应用价值。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "unresolvedEvidence",
+      "attributes": {
+        "label": "Evidence it remains unresolved / 未解决证据",
+        "placeholder": "What evidence shows that the question remains open? For example: limitations reported in papers or failures on particular cases. / 哪些证据说明问题仍未解决？例如：论文报告的局限，或现有方法仍无法处理的具体情形。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "currentFrontier",
+      "attributes": {
+        "label": "Current frontier / 当前前沿",
+        "placeholder": "Describe the strongest existing methods and their reported results, with the comparison conditions. / 介绍目前最好的方法和已有结果，并说明这些结果的比较条件。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "measurableHeadroom",
+      "attributes": {
+        "label": "Measurable headroom / 可衡量的提升空间",
+        "placeholder": "What measurable improvement is still possible beyond current results? Give an estimate or target and its basis. / 相对当前结果，还有哪些可衡量的提升空间？给出预期改善或目标，并说明依据。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "## 03 Task design / 任务设计\nWhat does the Agent receive, produce and need to run? / 说明 Agent 获得什么、提交什么，以及运行条件。"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "agentInputs",
+      "attributes": {
+        "label": "Agent-visible inputs / Agent 可见输入",
+        "placeholder": "For example: protein sequences, allowed mutations and pilot measurements. Describe any feedback available during the task. / 例如：蛋白序列、允许选择的突变列表和先导实验测量。如任务中会提供反馈，也请说明。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "submissionArtifacts",
+      "attributes": {
+        "label": "Expected submission / 预期提交产物",
+        "placeholder": "For example: a CSV of recommended variants and predicted stability. Describe the expected contents and format; no upload is needed here. / 例如：候选突变列表、预测稳定性和最终推荐结果。说明内容和格式即可，无需在此上传文件。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "environment",
+      "attributes": {
+        "label": "Environment and software dependencies / 环境与软件依赖",
+        "placeholder": "For example: Linux, Python 3.11 and PyTorch. Include required versions or models; explicitly state if there are no special dependencies. / 例如：Linux、Python 3.11、PyTorch；如有指定软件或模型，请注明版本。没有特殊依赖时请明确说明。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "hardConstraints",
+      "attributes": {
+        "label": "Task-specific constraints / 任务专用约束",
+        "placeholder": "For example: three experiment rounds, 160 candidates per round, with no repeats. State restrictions on data access if applicable. / 例如：最多三轮实验，每轮 160 个候选，不得重复。如有数据访问限制，请一并说明。"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "agentResources",
+      "attributes": {
+        "label": "Estimated compute resources / 预计计算资源",
+        "placeholder": "For example: one 24 GB GPU, 32 GB RAM and about 2 hours. Give a rough estimate and note uncertainty; this is not a fixed evaluation limit. / 例如：单张 24 GB GPU、32 GB 内存，预计 2 小时。可给粗略估计并说明不确定性；这不等于正式评测上限。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "rawMetric",
+      "attributes": {
+        "label": "Metric description / 指标说明",
+        "placeholder": "Describe the calculation, evidence and direction. E.g. mean stability gain using fixed experimental measurements; higher is better. / 说明计算含义、比较依据和优劣方向。例如：依据固定实验测量，计算推荐候选的平均稳定性收益，越高越好。"
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "dropdown",
+      "id": "metricType",
+      "attributes": {
+        "label": "Metric type / 指标类型",
+        "description": "This converts raw scores to a common score. / 此类型用于将原始分数映射到统一的分数。",
+        "options": [
+          "linear_maximize · Linear · higher is better / 线性 · 越高越好 — Equal absolute gains count equally: 40 → 50 and 70 → 80 both add 10. / 相同绝对增量按相同幅度处理：40→50 与 70→80 都增加 10。",
+          "linear_minimize · Linear · lower is better / 线性 · 越低越好 — Equal absolute reductions count equally: 50 → 40 and 80 → 70 both remove 10. / 相同绝对降幅按相同幅度处理：50→40 与 80→70 都减少 10。",
+          "log_ratio_maximize · Log ratio · higher is better / 对数比例 · 越高越好 — For positive values, doubling 10 → 20 has the same ratio as 20 → 40. / 适用于正数，关注倍数增长：10→20 与 20→40 都翻倍。",
+          "log_ratio_minimize · Log ratio · lower is better / 对数比例 · 越低越好 — For positive values, reducing runtime 100 → 50 and 50 → 25 both halves it. / 适用于正数，关注倍数缩减：耗时 100→50 与 50→25 都减半。",
+          "upper_residual_log · Approaching a known upper bound / 接近已知上限 — With a justified upper bound of 100%, accuracy 90% → 95% halves the remaining gap. The bound and tolerance need review. / 若科学上确定的上限为 100%，准确率 90%→95% 将剩余差距减半；需确认上限与容差。",
+          "lower_residual_log · Approaching a known lower bound / 接近已知下限 — With a justified error floor of 0, error 10 → 5 halves the remaining gap. The bound and tolerance need review. / 若误差的科学下限为 0，误差 10→5 将剩余差距减半；需确认下限与容差。",
+          "power_maximize · Power · higher is better / 幂函数 · 越高越好 — For example, a square-root conversion of a nonnegative score. The exponent needs a scientific justification. / 例如对非负分数取平方根；采用的幂次需要科学依据。",
+          "power_minimize · Power · lower is better / 幂函数 · 越低越好 — For example, a square-root conversion of a nonnegative error, oriented so lower raw error is better. Justify the exponent. / 例如对非负误差取平方根，并按原始误差越低越好的方向处理；幂次需有依据。",
+          "monotone_piecewise_maximize · Monotone piecewise · higher is better / 单调分段 · 越高越好 — Use different slopes across scientifically justified thresholds while preserving the higher-is-better order. / 在有科学依据的阈值两侧采用不同斜率，始终保持原始分越高越好的顺序。",
+          "monotone_piecewise_minimize · Monotone piecewise · lower is better / 单调分段 · 越低越好 — Use different slopes across scientifically justified thresholds while preserving the lower-is-better order. / 在有科学依据的阈值两侧采用不同斜率，始终保持原始分越低越好的顺序。",
+          "custom · Custom conversion / 自定义 — Explain the formula or steps that convert the raw score into display utility, and why a standard conversion is unsuitable. / 说明如何将原始分转换为展示分，包括公式或步骤，以及标准转换不适用的原因。",
+          "raw_only · Keep the raw score only / 仅保留原始分 — Keep the original score without conversion; explain why. / 不做分数转换，保留原始指标数值；请说明原因。",
+          "null · Not yet classified / 暂不确定 — The conversion type is not yet determined; explain what remains uncertain. / 尚未确定转换类型；请说明不确定之处。"
+        ]
+      },
+      "validations": {
+        "required": true
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "metricExplanation",
+      "attributes": {
+        "label": "Additional explanation / 补充说明",
+        "placeholder": "Explain the proposed conversion or the reason for this choice. / 说明建议的转换方法，或选择此类型的原因。",
+        "description": "Required for custom, raw_only and null (unclassified). / 自定义、仅原始分或未分类时必填。"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "markdown",
+      "attributes": {
+        "value": "## 04 References and permissions / 参考材料和授权"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "sources",
+      "attributes": {
+        "label": "References / 参考材料",
+        "placeholder": "Optional: up to 20 stable HTTPS links, one per line. / 选填：最多 20 条稳定 HTTPS 链接，每行一条。"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "usageRestrictions",
+      "attributes": {
+        "label": "Usage restrictions / 使用限制说明",
+        "placeholder": "State any attribution, access approval, research-only use or redistribution restrictions. Leave blank if there are no special restrictions. / 如材料要求署名、申请访问、仅限研究用途或禁止再分发，请说明；没有特殊限制可留空。"
+      },
+      "validations": {
+        "required": false
+      }
+    },
+    {
+      "type": "checkboxes",
+      "id": "permissions",
+      "attributes": {
+        "label": "Permissions / 授权确认",
+        "options": [
+          {
+            "label": "I confirm that the data, code and other materials I provide have the permissions needed for task construction and evaluation in LiveDiscoveryBench, and that I have disclosed any attribution, access or redistribution restrictions. / 我确认所提供的数据、代码及其他材料具有用于 LiveDiscoveryBench 任务构建与评测的相应权限；如有署名、访问或再分发限制，我已说明。",
+            "required": true
+          },
+          {
+            "label": "If approved, I authorize LiveDiscoveryBench to use these materials to prepare a public task-repository contribution within the permissions and restrictions stated above. / 若提案获准，我授权 LiveDiscoveryBench 在上述权限和限制范围内，使用这些材料整理公开任务仓库贡献。",
+            "required": true
+          }
+        ]
+      }
+    }
+  ]
+}

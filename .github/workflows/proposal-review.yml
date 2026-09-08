@@ -1,0 +1,43 @@
+name: Proposal review
+on:
+  workflow_dispatch:
+    inputs:
+      discussion:
+        description: 'Discussion number / Proposal 编号'
+        required: true
+        type: string
+      decision:
+        description: 'Decision / 审核决定'
+        required: true
+        type: choice
+        options: [approve, changes_requested, decline]
+      reason:
+        description: 'Public reason, 20–5000 characters / 公开理由，20–5000 字符'
+        required: true
+        type: string
+permissions:
+  contents: read
+  discussions: write
+  issues: read
+  pull-requests: read
+  statuses: write
+concurrency:
+  group: contribution-governance
+  cancel-in-progress: false
+jobs:
+  decide:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Record public decision
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DISCUSSION_NUMBER: ${{ inputs.discussion }}
+          DECISION: ${{ inputs.decision }}
+          REASON: ${{ inputs.reason }}
+        run: python3 -I .github/scripts/governance.py decide

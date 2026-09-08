@@ -1,37 +1,43 @@
 # Contributing / 共建指南
 
+[Official portal / 官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/) · [Submit Proposal / 提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
+
+## Proposals / 提案
+
+Use the bilingual Proposals Discussion form. Your GitHub account identifies you; no private email is collected. Bodies, links and comments are public. Do not provide sensitive information or material you cannot publish. Earlier private website records have not been migrated publicly.
+
+使用 Proposals 分类中的双语 Discussion 表单，以 GitHub 账号确认身份，不收集私人邮箱。正文、链接和评论均会公开；勿提交敏感信息或无权公开的材料。旧站私有记录未自动公开迁移。
+
+Discuss feedback in comments and edit the original body to revise it. Metric explanations are always visible and required for custom, raw_only or unclassified metrics. Both permissions confirmations are required, including after revisions.
+
+通过评论获得反馈，通过编辑正文修订。指标补充说明始终显示，自定义、仅原始分和未分类时必填；两项授权确认始终必需。
+
+A maintainer other than the author runs **Proposal review** on `main`, supplying the Discussion number, decision and a public reason (20–5000 characters). The Action checks permission and records the actor, decision, exact content fingerprint and run link. Labels display status only. Editing approved content, including reverting an edit, requires renewed approval. The original author then opens the task PR; there is no website binding step.
+
+非作者的维护者在 main 上运行 **Proposal review**，填写 Discussion 编号、决定及 20–5000 字符的公开理由。Action 校验权限并记录操作者、决定、正文摘要及运行链接。标签仅用于展示，不能作为批准凭据。修改获批正文（包括修改后还原）须重新批准；由原作者创建任务 PR，无需回网站绑定。
+
 <a id="templates"></a>
-## PR templates / PR 模板
+## PR types and reviews / PR 类型与审核
 
-Choose a template when comparing branches, or copy its contents into the PR body. Template selection neither grants approval nor sets labels; a maintainer confirms one type label.
-
-比较分支时选择模板，或复制模板内容到 PR 正文。选择模板不代表批准，也不会自动设置标签；维护者确认唯一类型标签。
-
-| Purpose / 用途 | Start / 开始创建 | Template / 模板 |
+| Purpose / 用途 | Label / 标签 | Required body line / 正文必需行 |
 | --- | --- | --- |
-| New task / 新增任务 | [Compare](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/compare?expand=1&template=new_task.md) | [new_task.md](.github/PULL_REQUEST_TEMPLATE/new_task.md) |
-| Task fix / 任务修复 | [Compare](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/compare?expand=1&template=task_fix.md) | [task_fix.md](.github/PULL_REQUEST_TEMPLATE/task_fix.md) |
-| Maintenance / 仓库维护 | [Compare](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/compare?expand=1&template=maintenance.md) | [maintenance.md](.github/PULL_REQUEST_TEMPLATE/maintenance.md) |
+| [New task / 新增任务](.github/PULL_REQUEST_TEMPLATE/new_task.md) | `type:new-task` | `Proposal: https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/NUMBER` |
+| [Task fix / 任务修复](.github/PULL_REQUEST_TEMPLATE/task_fix.md) | `type:task-fix` | `Task: EXISTING_TASK_ID` |
+| [Maintenance / 仓库维护](.github/PULL_REQUEST_TEMPLATE/maintenance.md) | `type:maintenance` | Describe scope / 说明范围 |
 
-### New task / 新增任务 — `type:new-task`
+A maintainer confirms exactly one type label. New tasks must match an open, currently approved Proposal in this repository, with the same author. New-task/fix PRs change exactly one task and cannot mix in repository policy changes. Fixes refer to an existing task without another Proposal. Maintenance uses ordinary GitHub review, cannot introduce tasks, and stays off the task board. Scientific/scoring changes belong in task fixes; do not reclassify them as maintenance.
 
-Submit a website Proposal and receive Admin approval (`approved_for_pr`). Copy `tasks/_template/` to `tasks/<task-id>/`; add one task per PR without unrelated repository changes. Fill in the approved Proposal ID (e.g. `LDBP-2026-000001`) and website detail URL. Create the GitHub PR, then bind its URL from the approved Proposal page. Maintainers adding tasks follow the same process.
+维护者确认唯一类型标签。新增任务须关联本仓库仍开放、有效获批且作者相同的 Proposal。新增/修复只修改一道任务，不混入仓库策略。修复关联已有任务，无需再提 Proposal。维护采用普通 GitHub 审核，不得新增任务且不进入任务看板；科学内容及评分变更应走任务修复。
 
-先在网站提交 Proposal 并获 Admin 批准（`approved_for_pr`）。复制 `tasks/_template/` 到 `tasks/<task-id>/`，一个 PR 仅新增一道任务，不混入无关仓库改动。填写获批 Proposal 编号（如 `LDBP-2026-000001`）及站内详情链接；创建 GitHub PR 后回到获批 Proposal 页面绑定 PR 链接。管理员新增任务也走同样流程。
+For tasks, a maintainer posts exactly:
 
-The Proposal remains private: its URL does not grant access. Do not copy private proposal material into the public PR. / Proposal 始终私有，链接不授予访问权限；不要把私有提案材料复制到公开 PR。
+```text
+/reviewers domain=@DOMAIN_LOGIN technical=@TECHNICAL_LOGIN
+```
 
-### Task fix / 任务修复 — `type:task-fix`
+The two reviewers must be different and neither may be the PR author. Use GitHub's **Review changes → Approve** for formal decisions. Both seats must approve the current commit. A commit update or dismissed review invalidates the relevant approval. Edit/delete the assignment comment or post a newer one to change seats. An invalid newer assignment fails closed.
 
-Reference one existing task ID; describe the defect, correction, verification and impact on previous scores. No new Proposal is required. Ask an Admin to register the fix against the existing task on the website. The original merged PR stays merged. Both new tasks and fixes require Domain and Technical review.
-
-关联一个已有任务 ID，说明缺陷、修复、验证及对旧分数的影响；无需新 Proposal。请 Admin 在网站为已有任务登记修复 PR；原 PR 保持已合并。新增任务及修复均走 Domain 与 Technical 双审。
-
-### Repository maintenance / 仓库维护 — `type:maintenance`
-
-Documentation, CI, templates and configuration need no Proposal and do not enter the website task PR board. Mechanical maintenance may touch multiple existing packages; explain the scope and validate all affected packages. Do not use maintenance to introduce new tasks or bypass scientific/scoring review. Split mixed-purpose work into separate PRs.
-
-文档、CI、模板及配置维护无需 Proposal，不进入网站任务 PR 看板。机械性维护可涉及多个已有包，须说明范围并检查所有受影响包。不得借维护新增任务或绕过科学内容、评分逻辑审核；不同用途的改动分开提 PR。
+两席须由不同且非 PR 作者的账号担任。正式结论使用 GitHub 的 Review changes → Approve；两席须批准当前提交，更新代码或撤回审核后须重新检查。可编辑、删除指定评论或发布更新的指定评论改派；最新指定不合法时检查不通过。
 
 ## Package preparation / 准备任务包
 
@@ -42,21 +48,28 @@ Documentation, CI, templates and configuration need no Proposal and do not enter
 - Record an immutable `source_id`; leave unclassified `metric.type` as null and unconfirmed operational limits as `{}`. Do not invent transform parameters or measured baselines. / 记录不可变构造来源；未分类类型写 null，未确认资源上限写 `{}`，不编造转换参数或实测 baseline。
 - Only commit redistributable material. The repository and PRs are public. Hidden-from-Agent data is not automatically safe to publish; agree a permitted delivery route for nonpublic scoring data with maintainers. / 仅提交可再分发材料；仓库及 PR 均公开。对 Agent 隐藏的数据不等于可以公开，非公开评分数据先与维护者确认合法交付方式。
 
-## Maintainer checklist / 合并前人工核对
+## Merge boundary / 合并门槛
 
-1. Confirm purpose and exactly one type label, independent of author role. / 确认用途及唯一类型标签，不因管理员身份豁免流程。
-2. For new tasks, open the private Proposal with an authorized account; confirm approval, author and consistency with the PR. GitHub creation itself is not blocked, and CI does not query website approval. / 新增任务：用有权限账号核对私有 Proposal 的批准、作者及与 PR 的一致性；网站不阻止直接开 GitHub PR，CI 不查询批准状态。
-3. Confirm the real GitHub PR exists, belongs here, matches the registered author and contains the intended task. Binding currently checks URL format only. / 核对真实 PR 存在、属于本仓库、作者与登记一致、内容对应；网站绑定目前只检查 URL 格式。
-4. For task PRs, confirm both review seats approved the latest changes and current CI passed. Merge on GitHub, then manually synchronize CI/GitHub status on the website; a website status update does not merge a PR. / 任务 PR：最新改动须通过站内双审及当前 CI；在 GitHub 合并，再人工同步站内状态，站内更新不执行合并。
-5. Review maintenance on GitHub without registering it as a task contribution. No label or CI result substitutes for manual review. / 维护 PR 在 GitHub 审核，不登记为任务贡献；标签及 CI 不代替人工核对。
+`Contribution gate` runs trusted default-branch policy, reloads GitHub state and checks type provenance, file changes, task structure, current Proposal approval and two current reviews. It never runs candidate code or unpacks submitted archives. PR, Proposal, assignment and review changes trigger rechecks; a scheduled reconciliation runs every 15 minutes. API errors do not pass the check.
 
-## CI boundary / CI 边界
+Contribution gate 从默认分支加载可信策略，重新读取 GitHub 状态，校验分类来源、文件变化、结构、当前 Proposal 批准及双审。不会执行候选代码或解压上传文件。PR、Proposal、审核席及 Review 改变均触发重查，每 15 分钟另行对账；API 错误不判通过。
 
-CI requires one type label and checks affected package structure, JSON, environment declarations and both verifier paths. No task code is imported or executed, no dependencies installed, images built or archives unpacked. PRs use the checker from the base commit; checker changes take effect after merge and must be tested locally before merging. CI does not prove scientific validity, runtime correctness or Proposal approval, nor does it configure branch protection.
+Protect `main` with this required GitHub Actions status, strict up-to-date checks, at least one native review, stale-review dismissal, last-push approval, conversation resolution, administrator enforcement, and no force pushes or deletions. This prevents normal merges with unmet requirements; it does not prevent creating PRs. Event processing has latency: before merging, maintainers must still inspect the latest scientific content and approved scope and wait for the latest gate run.
 
-CI 要求唯一类型标签，检查受影响包的结构、JSON、环境声明及双入口；不导入或执行任务代码、不安装依赖、不构建镜像、不解压。PR 使用目标分支提交的检查器；检查器改动合并后生效，维护者合并前本地测试。CI 不证明科学有效性、运行正确性或 Proposal 获批，也不会自动配置分支保护。
+main 应设置此必需状态检查、分支最新要求、至少一份原生审核、旧审核失效、最后推送批准、讨论解决、管理员同样受限，并禁止强推及删除。这保证条件未满足时不能正常合并，不阻止创建 PR。事件处理存在延迟；维护者合并前仍须核对最新科学内容与获批范围并等待最新检查。
+
+## Task maintenance and portal / 任务维护与官网
+
+Discussion, PR and Review records are the only contribution state. The portal builds a public snapshot hourly and links back to GitHub; failures retain the last successful site. Task and leaderboard records are typed website source. For a broken published task, record bilingual `needs_fix`/`fixing` notes and its fix PR in the website's `src/data/task-maintenance.ts`; it is excluded from both leaderboards until a maintainer verifies the repair merge and restores `active`.
+
+Discussion、PR、Review 是贡献状态的唯一来源。官网每小时构建公开快照并链接 GitHub；失败时保留上一成功版本。任务与榜单由网站类型化文件维护。已发布任务有问题时，在网站 src/data/task-maintenance.ts 记录双语说明、needs_fix/fixing 和修复 PR；修复合并核对后才恢复 active，其间从两处榜单排除。
+
+Acceptance-only Discussions and PRs must start with `[ACCEPTANCE]` and carry `acceptance`; they are excluded from the portal. Close them after checks and never merge fictional tasks. Successful dual review requires two real, different people.
+
+验收条目标题以 [ACCEPTANCE] 开头并带 acceptance 标签，始终不进入官网；验收后关闭，不合并虚构任务。双审成功路径须由两位不同的真实审核者完成。
 
 ```sh
 python3 -I .github/scripts/test_task_structure.py
+python3 -I .github/scripts/test_governance.py
 python3 -I .github/scripts/task_structure.py .
 ```
