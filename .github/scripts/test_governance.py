@@ -22,6 +22,10 @@ class GovernanceTests(unittest.TestCase):
     def test_missing_consent(self):
         row = self.proposal(); row['body'] = row['body'].replace('- [X]', '- [ ]')
         with self.assertRaises(ValueError): g.validate_proposal(row)
+    def test_consent_text_outside_confirmation_is_not_consent(self):
+        row = self.proposal()
+        row['body'] = row['body'].replace('### Permissions / 授权确认', '### Example text')
+        with self.assertRaises(ValueError): g.validate_proposal(row)
     def test_edit_then_revert_changes_digest(self):
         row = self.proposal(); before = g.digest(row); row['lastEditedAt']='2026-09-08T00:00:00Z'
         self.assertNotEqual(before, g.digest(row))

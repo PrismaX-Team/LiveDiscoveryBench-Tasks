@@ -102,8 +102,9 @@ def validate_proposal(row):
     sources = values.get("References / 参考材料", "")
     if sources and sources != "_No response_":
         require(len(sources.splitlines()) <= 20 and all(re.fullmatch(r"https://[^\s]+", line.strip()) for line in sources.splitlines()), "References must be up to 20 HTTPS links, one per line")
+    consent_lines = values.get("Permissions / 授权确认", "").splitlines()
     for label in schema["consents"]:
-        require(f"- [X] {label}" in row["body"] or f"- [x] {label}" in row["body"], "Both material permissions and publication consent are required")
+        require(f"- [X] {label}" in consent_lines or f"- [x] {label}" in consent_lines, "Both material permissions and publication consent are required")
 
 _run_cache = {}
 def decision_record(row):
