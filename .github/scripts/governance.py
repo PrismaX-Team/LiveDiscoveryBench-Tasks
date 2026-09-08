@@ -219,7 +219,11 @@ def gate(pr):
     assigned = seats(pr, rest_pages(f"issues/{pr['number']}/comments"))
     reviews = rest_pages(f"pulls/{pr['number']}/reviews")
     require(all(approved_review(login, reviews, pr["head"]["sha"]) for login in assigned.values()), "Both seats must approve the current commit")
-    require(not any(row["state"] == "CHANGES_REQUESTED" for row in reviews if row["id"] == max(r["id"] for r in reviews if r["user"]["login"] == row["user"]["login"] and r["state"] in ("APPROVED", "CHANGES_REQUESTED", "DISMISSED", "COMMENTED"))), "Outstanding change requests remain")
+    decisive = {}
+    for review in sorted(reviews, key=lambda row: row["id"]):
+        if review["state"] in ("APPROVED", "CHANGES_REQUESTED", "DISMISSED"):
+            decisive[review["user"]["login"].lower()] = review["state"]
+    require("CHANGES_REQUESTED" not in decisive.values(), "Outstanding change requests remain")
     # Re-fetch key mutable input before publishing success; later events re-run the full gate.
     latest = api(f"repos/{REPO}/pulls/{pr['number']}")
     require(latest["head"]["sha"] == pr["head"]["sha"] and latest["body"] == pr["body"] and latest["labels"] == pr["labels"], "PR changed during validation; retry")
@@ -325,15 +329,11 @@ def snapshot():
         row = api(f"repos/{REPO}/pulls/{item['number']}")
         reviews = rest_pages(f"pulls/{row['number']}/reviews")
         try:
-            # Public snapshot must not need collaborator permission APIs. Assignment is
-            # authoritative only when the trusted gate passed; expose seats from its audit
-            # through maintainer-associated comments. Merge gate uses live permission API.
             comments = rest_pages(f"issues/{row['number']}/comments")
-            allowed = {c["user"]["login"] for c in comments if c["author_association"] in ("OWNER", "MEMBER", "COLLABORATOR")}
-            assigned = seats(row, comments, lambda login: login in allowed)
+            assigned = seats(row, comments)
         except ValueError:
             assigned = {}
-        statuses = api(f"repos/{REPO}/commits/{row['head']['sha']}/status")["statuses"]
+        statuses = rest_pages(f"statuses/{row['head']['sha']}")
         checks = [check for check in statuses if check["context"] == CONTEXT and check["creator"]["login"] == "github-actions[bot]"]
         state = checks[0]["state"] if checks else "pending"
         result["pullRequests"].append({"number": row["number"], "title": row["title"], "url": row["html_url"], "author": identity(row["user"]), "kind": "new_task" if "type:new-task" in kinds else "task_fix", "state": "merged" if row["merged"] else row["state"], "gate": state if state in ("success", "pending") else "failure", "assignments": [{"role": role, "reviewer": identity({"login": login}), "approved": approved_review(login, reviews, row["head"]["sha"])} for role, login in assigned.items()], "updatedAt": row["updated_at"]})
