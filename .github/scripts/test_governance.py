@@ -3,6 +3,7 @@ from pathlib import Path
 import unittest
 from unittest.mock import patch
 import json
+import os
 spec = importlib.util.spec_from_file_location("governance", Path(__file__).with_name("governance.py"))
 g = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(g)
@@ -77,5 +78,36 @@ class GovernanceTests(unittest.TestCase):
     def test_acceptance_excluded(self):
         self.assertTrue(g.acceptance(dict(title='[ACCEPTANCE] Test',labels=[])))
         self.assertTrue(g.acceptance(dict(title='Test',labels={'nodes':[{'name':'acceptance'}]})))
+
+    def test_rerun_cannot_publish_a_decision(self):
+        for actor in ['maintainer', 'author']:
+            with patch.dict(os.environ, {'GITHUB_REF':'refs/heads/main', 'GITHUB_RUN_ATTEMPT':'2', 'GITHUB_ACTOR':'maintainer', 'GITHUB_TRIGGERING_ACTOR':actor}), patch.object(g, 'api') as api:
+                with self.assertRaisesRegex(ValueError, 'rerunning old decisions'):
+                    g.decide()
+                api.assert_not_called()
+
+    def test_decision_checks_actual_initiator(self):
+        env = {'GITHUB_REF':'refs/heads/main', 'GITHUB_RUN_ATTEMPT':'1', 'GITHUB_ACTOR':'maintainer', 'GITHUB_TRIGGERING_ACTOR':'author'}
+        with patch.dict(os.environ, env), patch.object(g, 'api') as api:
+            with self.assertRaisesRegex(ValueError, 'actual initiating maintainer'):
+                g.decide()
+            api.assert_not_called()
+        env['GITHUB_ACTOR'] = 'author'
+        env['DISCUSSION_NUMBER'] = '1'
+        with patch.dict(os.environ, env), patch.object(g, 'can_maintain', return_value=True), patch.object(g, 'discussion', return_value=self.proposal()), patch.object(g, 'api') as api:
+            with self.assertRaisesRegex(ValueError, 'self-approval'):
+                g.decide()
+            api.assert_not_called()
+
+    def test_records_require_successful_first_attempt_by_actual_actor(self):
+        row = self.proposal()
+        data = dict(run='1', actor='maintainer', discussion=1, decision='approve', digest=g.digest(row))
+        row['comments'] = [dict(author={'login':'github-actions[bot]'}, lastEditedAt=None, createdAt='2026-09-08T01:00:01Z', body=g.MARKER+json.dumps(data)+' -->')]
+        run = dict(path='.github/workflows/proposal-review.yml', event='workflow_dispatch', head_branch='main', head_repository={'full_name':g.REPO}, conclusion='success', actor={'login':'maintainer'}, triggering_actor={'login':'maintainer'}, run_attempt=1, created_at='2026-09-08T01:00:00Z', updated_at='2026-09-08T01:00:02Z')
+        for attempt, actor, expected in [(1, 'maintainer', data), (2, 'maintainer', None), (2, 'author', None), (1, 'author', None)]:
+            g._run_cache.clear()
+            with patch.object(g, 'api', return_value={**run, 'run_attempt':attempt, 'triggering_actor':{'login':actor}}):
+                self.assertEqual(g.decision_record(row), expected)
+        g._run_cache.clear()
 
 if __name__ == '__main__': unittest.main()

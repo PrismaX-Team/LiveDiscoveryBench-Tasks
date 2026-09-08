@@ -16,6 +16,10 @@ A maintainer other than the author runs **Proposal review** on `main`, supplying
 
 非作者的维护者在 main 上运行 **Proposal review**，填写 Discussion 编号、决定及 20–5000 字符的公开理由。Action 校验权限并记录操作者、决定、正文摘要及运行链接。标签仅用于展示，不能作为批准凭据。修改获批正文（包括修改后还原）须重新批准；由原作者创建任务 PR，无需回网站绑定。
 
+Always use **Run workflow** for a new decision. **Re-run jobs** is rejected, even for the original reviewer; retry failures with a new dispatch after checking the current proposal. Re-running a previously successful decision invalidates that run as approval evidence.
+
+每次决定都必须使用 **Run workflow** 新建运行。即使是原审核者，**Re-run jobs** 也会被拒绝；失败后须核对当前提案并重新发起审核。重跑原成功决定会使该运行失去批准效力。
+
 <a id="templates"></a>
 ## PR types and reviews / PR 类型与审核
 
