@@ -1,0 +1,16 @@
+{
+  "id": "acceptance-workflow-check",
+  "title": "[ACCEPTANCE] Workflow verification only",
+  "domain": "replace-with-domain",
+  "source_id": "expert:replace-with-immutable-construction-source",
+  "data_sources": [
+    {
+      "name": "Replace with the underlying dataset or repository",
+      "url": "https://example.org/replace-with-stable-source"
+    }
+  ],
+  "metric": {
+    "description": "Replace with the raw metric definition and whether higher or lower is better.",
+    "type": null
+  }
+}
