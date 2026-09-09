@@ -121,7 +121,8 @@ def decision_record(row):
             # A bot comment or a label on its own is never approval authority.
             if (run["path"] == ".github/workflows/proposal-review.yml" and run["event"] == "workflow_dispatch"
                     and run["head_branch"] == "main" and run["head_repository"]["full_name"] == REPO
-                    and run["conclusion"] == "success" and run["actor"]["login"] == record["actor"]
+                    and run["conclusion"] == "success" and run["run_attempt"] == 1
+                    and run["actor"]["login"] == run["triggering_actor"]["login"] == record["actor"]
                     and record["discussion"] == row["number"] and record["decision"] in ("approve", "changes_requested", "decline")
                     and run["created_at"] <= comment["createdAt"] <= run["updated_at"]):
                 records.append((comment["createdAt"], record))
@@ -274,7 +275,11 @@ def set_proposal_label(row, decision):
 
 def decide():
     require(os.environ.get("GITHUB_REF") == "refs/heads/main", "Decisions run only on main")
-    actor = os.environ["GITHUB_ACTOR"]
+    # Re-runs retain the original actor's privileges but read the current proposal.
+    # Each decision must therefore be a fresh dispatch, never a replay of old inputs.
+    require(os.environ.get("GITHUB_RUN_ATTEMPT") == "1", "Start a new Proposal review dispatch; rerunning old decisions is forbidden")
+    actor = os.environ.get("GITHUB_TRIGGERING_ACTOR")
+    require(actor and actor == os.environ.get("GITHUB_ACTOR"), "Decision must identify the actual initiating maintainer")
     require(can_maintain(actor), "Only maintainers may decide")
     row = discussion(int(os.environ["DISCUSSION_NUMBER"]))
     require(row["author"] and actor.lower() != row["author"]["login"].lower(), "No Proposal self-approval or self-decision")
