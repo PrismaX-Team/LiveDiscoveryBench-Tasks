@@ -78,6 +78,7 @@ def fields(body):
     result = {}
     for match in re.finditer(r"^### (.+)\n([\s\S]*?)(?=^### |\Z)", body, re.M):
         label, value = match.groups()
+        label = label.split(" / ")[0]  # Earlier forms used inline bilingual headings.
         require(label not in result, "Duplicate form heading")
         result[label] = value.strip()
     return result
@@ -87,24 +88,27 @@ def validate_proposal(row):
     schema = json.loads(Path(__file__).with_name("proposal-schema.json").read_text())
     values = fields(row["body"])
     for field in schema["fields"]:
-        value = values.get(field["label"], "")
+        value = values.get(field["label"].split(" / ")[0], "")
         if value == "_No response_":
             value = ""
         require(not field["required"] or bool(value), f"Required field missing: {field['id']}")
         require(len(value) <= field["max"], f"Field too long: {field['id']}")
         if field["id"] == "professionalUrl":
             require(re.fullmatch(r"https://[^\s]+", value), "Professional profile must be HTTPS")
-    metric = values.get("Metric type / 指标类型", "").split(" · ")[0]
+    metric = values.get("Metric type", "").split(" · ")[0]
     require(metric in schema["metrics"], "Invalid metric type")
     if metric in ("custom", "raw_only", "null"):
-        explanation = values.get("Additional explanation / 补充说明", "")
+        explanation = values.get("Additional explanation", "")
         require(explanation and explanation != "_No response_", "This metric requires an explanation")
-    sources = values.get("References / 参考材料", "")
+    sources = values.get("References", "")
     if sources and sources != "_No response_":
         require(len(sources.splitlines()) <= 20 and all(re.fullmatch(r"https://[^\s]+", line.strip()) for line in sources.splitlines()), "References must be up to 20 HTTPS links, one per line")
-    consent_lines = values.get("Permissions / 授权确认", "").splitlines()
+    consent_body = values.get("Permissions", "")
+    # Markdown checkboxes may wrap onto multiple lines after bilingual layout changes.
+    checked = re.findall(r"^- \[[xX]\] ([\s\S]*?)(?=^- \[[ xX]\] |\Z)", consent_body, re.M)
+    normalize = lambda text: " ".join(text.replace(" / ", " ").split())
     for label in schema["consents"]:
-        require(f"- [X] {label}" in consent_lines or f"- [x] {label}" in consent_lines, "Both material permissions and publication consent are required")
+        require(normalize(label) in [normalize(value) for value in checked], "Both material permissions and publication consent are required")
 
 _run_cache = {}
 def decision_record(row):

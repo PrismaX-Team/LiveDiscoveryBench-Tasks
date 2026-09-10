@@ -18,11 +18,21 @@ class GovernanceTests(unittest.TestCase):
     def test_form_and_conditional_validation(self):
         row = self.proposal()
         g.validate_proposal(row)
-        row['body'] = row['body'].replace('### Additional explanation / 补充说明\n\nResearch evidence', '### Additional explanation / 补充说明\n\n_No response_')
+        row['body'] = row['body'].replace('### Additional explanation\n\nResearch evidence', '### Additional explanation\n\n_No response_')
         with self.assertRaises(ValueError): g.validate_proposal(row)
     def test_missing_consent(self):
         row = self.proposal(); row['body'] = row['body'].replace('- [X]', '- [ ]')
         with self.assertRaises(ValueError): g.validate_proposal(row)
+
+    def test_current_and_earlier_form_layouts(self):
+        row = self.proposal()
+        row['body'] = row['body'].replace('Metric type / 指标类型', 'Metric type').replace('Permissions / 授权确认', 'Permissions')
+        g.validate_proposal(row)
+        schema = json.loads(Path(__file__).with_name('proposal-schema.json').read_text())
+        for field in schema['fields']:
+            row['body'] = row['body'].replace('### '+field['label']+'\n', '### '+field['label']+' / 旧版中文标题\n')
+        row['body'] = row['body'].replace('  \n', ' / ')
+        g.validate_proposal(row)
     def test_consent_text_outside_confirmation_is_not_consent(self):
         row = self.proposal()
         row['body'] = row['body'].replace('### Permissions / 授权确认', '### Example text')

@@ -2,121 +2,121 @@
   "fields": [
     {
       "id": "fullName",
-      "label": "Name / 姓名",
+      "label": "Name",
       "required": true,
       "max": 120
     },
     {
       "id": "institution",
-      "label": "Institution / 机构",
+      "label": "Institution",
       "required": false,
       "max": 200
     },
     {
       "id": "position",
-      "label": "Position / 职位",
+      "label": "Position",
       "required": false,
       "max": 160
     },
     {
       "id": "professionalUrl",
-      "label": "Academic or professional profile / 学术或职业主页",
+      "label": "Academic or professional profile",
       "required": true,
       "max": 2000
     },
     {
       "id": "relevantExperience",
-      "label": "Relevant experience / 相关经历",
+      "label": "Relevant experience",
       "required": false,
       "max": 8000
     },
     {
       "id": "title",
-      "label": "Task title / 任务标题",
+      "label": "Task title",
       "required": true,
       "max": 180
     },
     {
       "id": "domain",
-      "label": "Scientific domain / 科学领域",
+      "label": "Scientific domain",
       "required": true,
       "max": 100
     },
     {
       "id": "scientificQuestion",
-      "label": "Scientific question / 科学问题",
+      "label": "Scientific question",
       "required": true,
       "max": 16000
     },
     {
       "id": "importance",
-      "label": "Why it matters / 科学重要性",
+      "label": "Why it matters",
       "required": true,
       "max": 8000
     },
     {
       "id": "unresolvedEvidence",
-      "label": "Evidence it remains unresolved / 未解决证据",
+      "label": "Evidence it remains unresolved",
       "required": true,
       "max": 8000
     },
     {
       "id": "currentFrontier",
-      "label": "Current frontier / 当前前沿",
+      "label": "Current frontier",
       "required": true,
       "max": 24000
     },
     {
       "id": "measurableHeadroom",
-      "label": "Measurable headroom / 可衡量的提升空间",
+      "label": "Measurable headroom",
       "required": true,
       "max": 8000
     },
     {
       "id": "agentInputs",
-      "label": "Agent-visible inputs / Agent 可见输入",
+      "label": "Agent-visible inputs",
       "required": true,
       "max": 8000
     },
     {
       "id": "submissionArtifacts",
-      "label": "Expected submission / 预期提交产物",
+      "label": "Expected submission",
       "required": true,
       "max": 8000
     },
     {
       "id": "environment",
-      "label": "Environment and software dependencies / 环境与软件依赖",
+      "label": "Environment and software dependencies",
       "required": true,
       "max": 8000
     },
     {
       "id": "hardConstraints",
-      "label": "Task-specific constraints / 任务专用约束",
+      "label": "Task-specific constraints",
       "required": false,
       "max": 5000
     },
     {
       "id": "agentResources",
-      "label": "Estimated compute resources / 预计计算资源",
+      "label": "Estimated compute resources",
       "required": true,
       "max": 3000
     },
     {
       "id": "rawMetric",
-      "label": "Metric description / 指标说明",
+      "label": "Metric description",
       "required": true,
       "max": 8000
     },
     {
       "id": "metricExplanation",
-      "label": "Additional explanation / 补充说明",
+      "label": "Additional explanation",
       "required": false,
       "max": 5000
     },
     {
       "id": "usageRestrictions",
-      "label": "Usage restrictions / 使用限制说明",
+      "label": "Usage restrictions",
       "required": false,
       "max": 5000
     }
@@ -137,7 +137,7 @@
     "null"
   ],
   "consents": [
-    "I confirm that the data, code and other materials I provide have the permissions needed for task construction and evaluation in LiveDiscoveryBench, and that I have disclosed any attribution, access or redistribution restrictions. / 我确认所提供的数据、代码及其他材料具有用于 LiveDiscoveryBench 任务构建与评测的相应权限；如有署名、访问或再分发限制，我已说明。",
-    "If approved, I authorize LiveDiscoveryBench to use these materials to prepare a public task-repository contribution within the permissions and restrictions stated above. / 若提案获准，我授权 LiveDiscoveryBench 在上述权限和限制范围内，使用这些材料整理公开任务仓库贡献。"
+    "I confirm that the data, code and other materials I provide have the permissions needed for task construction and evaluation in LiveDiscoveryBench, and that I have disclosed any attribution, access or redistribution restrictions.  \n我确认所提供的数据、代码及其他材料具有用于 LiveDiscoveryBench 任务构建与评测的相应权限；如有署名、访问或再分发限制，我已说明。",
+    "If approved, I authorize LiveDiscoveryBench to use these materials to prepare a public task-repository contribution within the permissions and restrictions stated above.  \n若提案获准，我授权 LiveDiscoveryBench 在上述权限和限制范围内，使用这些材料整理公开任务仓库贡献。"
   ]
 }
