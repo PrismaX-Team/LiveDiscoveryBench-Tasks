@@ -7,7 +7,7 @@
     {
       "type": "markdown",
       "attributes": {
-        "value": "# LiveDiscoveryBench Proposal\n\nYou may complete this form in English or Chinese.  \n可使用中文或英文填写此表单。\n\nYour GitHub account identifies the author. The body, links and comments are public. Do not submit private email addresses, sensitive information or materials you cannot publish.  \n作者身份以 GitHub 账号为准。正文、链接和评论均会公开；请勿提交私人邮箱、敏感信息或无权公开的材料。"
+        "value": "Your GitHub account identifies the author. The body, links and comments are public. Do not submit private email addresses, sensitive information or materials you cannot publish.  \n作者身份以 GitHub 账号为准。正文、链接和评论均会公开；请勿提交私人邮箱、敏感信息或无权公开的材料。"
       }
     },
     {
@@ -57,7 +57,7 @@
       "id": "professionalUrl",
       "attributes": {
         "label": "Academic or professional profile",
-        "description": "学术或职业主页  \nhttps:// 学术或职业主页",
+        "description": "学术或职业主页",
         "placeholder": "https:// — profile or ORCID"
       },
       "validations": {
