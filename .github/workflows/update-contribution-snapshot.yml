@@ -1,0 +1,61 @@
+name: Update contribution snapshot
+
+on:
+  discussion:
+    types: [created, edited, deleted, labeled, unlabeled]
+  discussion_comment:
+    types: [created, edited, deleted]
+  pull_request:
+    types: [opened, closed, reopened, synchronize, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  discussions: read
+  pull-requests: read
+
+concurrency:
+  group: public-portal-publish
+  cancel-in-progress: false
+
+jobs:
+  update:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      # The policy is always read from the trusted default branch. No PR code is run.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          path: policy
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: gh-pages
+          path: pages
+          persist-credentials: false
+      - name: Generate validated snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p pages/data
+          python3 -I policy/.github/scripts/governance.py snapshot > pages/data/contributions.json.new
+          python3 -m json.tool pages/data/contributions.json.new >/dev/null
+          mv pages/data/contributions.json.new pages/data/contributions.json
+      - name: Publish snapshot to gh-pages
+        working-directory: pages
+        run: |
+          git config user.name "LiveDiscoveryBench Data Sync"
+          git config user.email pages@users.noreply.github.com
+          git add data/contributions.json
+          if git diff --cached --quiet; then
+            echo "Snapshot unchanged"
+          else
+            git commit -m "Update public contribution snapshot"
+            git push origin HEAD:gh-pages
+          fi
