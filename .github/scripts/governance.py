@@ -108,7 +108,10 @@ def validate_proposal(row):
     checked = re.findall(r"^- \[[xX]\] ([\s\S]*?)(?=^- \[[ xX]\] |\Z)", consent_body, re.M)
     normalize = lambda text: " ".join(text.replace(" / ", " ").split())
     for label in schema["consents"]:
-        require(normalize(label) in [normalize(value) for value in checked], "Both material permissions and publication consent are required")
+        # Same project, new public name. Accept the exact earlier wording without
+        # editing submitted Discussions or changing their approved fingerprints.
+        variants = (label, label.replace("Science Innovation Exam", "LiveDiscoveryBench"))
+        require(any(normalize(variant) in [normalize(value) for value in checked] for variant in variants), "Both material permissions and publication consent are required")
 
 _run_cache = {}
 def decision_record(row):

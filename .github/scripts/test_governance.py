@@ -24,6 +24,23 @@ class GovernanceTests(unittest.TestCase):
         row = self.proposal(); row['body'] = row['body'].replace('- [X]', '- [ ]')
         with self.assertRaises(ValueError): g.validate_proposal(row)
 
+    def test_rebrand_preserves_legacy_proposals(self):
+        for brand in ('Science Innovation Exam', 'LiveDiscoveryBench'):
+            for separator in ('  \n', ' / '):
+                with self.subTest(brand=brand, separator=separator):
+                    row = self.proposal()
+                    row['body'] = row['body'].replace('Science Innovation Exam', brand).replace('  \n', separator)
+                    before = g.digest(row)
+                    g.validate_proposal(row)
+                    self.assertEqual(before, g.digest(row))
+                    row['body'] = row['body'].replace('- [X]', '- [ ]', 1)
+                    with self.assertRaises(ValueError): g.validate_proposal(row)
+
+    def test_rebrand_does_not_accept_other_consent_changes(self):
+        row = self.proposal()
+        row['body'] = row['body'].replace('Science Innovation Exam', 'Another Benchmark')
+        with self.assertRaises(ValueError): g.validate_proposal(row)
+
     def test_current_and_earlier_form_layouts(self):
         row = self.proposal()
         row['body'] = row['body'].replace('Metric type / 指标类型', 'Metric type').replace('Permissions / 授权确认', 'Permissions')

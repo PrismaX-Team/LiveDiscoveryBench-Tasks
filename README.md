@@ -1,6 +1,6 @@
-# LiveDiscoveryBench Tasks
+# Science Innovation Exam Tasks
 
-Task contribution repository for LiveDiscoveryBench. / LiveDiscoveryBench 任务共建仓库。
+Task contribution repository for Science Innovation Exam. / Science Innovation Exam 任务共建仓库。
 
 [Official portal / 官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/) · [Submit Proposal / 提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
 
