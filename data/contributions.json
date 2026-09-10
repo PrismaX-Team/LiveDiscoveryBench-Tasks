@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-10T10:58:54.693144Z",
+  "updatedAt": "2026-09-10T11:00:01.646719Z",
   "proposals": [
+    {
+      "number": 6,
+      "title": "[Proposal]",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/6",
+      "author": {
+        "name": "lulaiao",
+        "githubLogin": "lulaiao",
+        "image": "https://avatars.githubusercontent.com/u/75672201?u=30ff02c18d2c249cd3b1d45af07565175e4aeb03&v=4",
+        "githubUrl": "https://github.com/lulaiao"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-10T10:59:25Z"
+    },
     {
       "number": 5,
       "title": "[Proposal]",
@@ -15,7 +29,7 @@
       },
       "reviewers": [],
       "status": "submitted",
-      "updatedAt": "2026-09-10T10:58:53Z"
+      "updatedAt": "2026-09-10T10:59:08Z"
     },
     {
       "number": 4,
@@ -30,20 +44,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-10T10:58:41Z"
-    },
-    {
-      "number": 6,
-      "title": "[Proposal]",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/6",
-      "author": {
-        "name": "lulaiao",
-        "githubLogin": "lulaiao",
-        "image": "https://avatars.githubusercontent.com/u/75672201?u=30ff02c18d2c249cd3b1d45af07565175e4aeb03&v=4",
-        "githubUrl": "https://github.com/lulaiao"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-10T10:55:25Z"
     }
   ],
   "pullRequests": []
