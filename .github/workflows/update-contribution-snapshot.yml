@@ -1,8 +1,8 @@
 name: Update contribution snapshot
 
 on:
-  push:
-    branches: [gh-pages]
+  repository_dispatch:
+    types: [portal-updated]
   discussion:
     types: [created, edited, deleted, labeled, unlabeled, closed, reopened]
   workflow_run:

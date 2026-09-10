@@ -47,8 +47,8 @@ Copy `tasks/_template/`, rename it and replace all placeholders. The template de
 
 ## Website contribution data / 官网共建数据
 
-This repository owns `data/contributions.json` on its `gh-pages` branch. The **Update contribution snapshot** workflow reads public Discussions and PRs, saves the JSON, then deploys the existing static site with the refreshed data. It runs after contribution governance/review workflows, on relevant Discussion events, when website assets are pushed, hourly, and on manual dispatch from `main`. It uses only this repository's `GITHUB_TOKEN`; no cross-repository token is required for data updates.
+This repository owns `data/contributions.json` on its `gh-pages` branch. The **Update contribution snapshot** workflow reads public Discussions and PRs, saves the JSON, then deploys the existing static site with the refreshed data. It runs after contribution governance/review workflows, on relevant Discussion events, on `portal-updated` repository dispatch, hourly, and on manual dispatch from `main`. It uses only this repository's `GITHUB_TOKEN`; no cross-repository token is required for data updates.
 
-公开共建数据保存在本仓库 **gh-pages 分支**的 `data/contributions.json`，不写入受保护的 main。**Update contribution snapshot** 使用本仓库自己的 Token，读取公开 Proposal/PR、保存数据并直接部署已有静态网页，不重新构建官网。贡献审核完成、Discussion 变化、网页产物推送、每小时及手动运行都会触发；无需为数据同步配置跨仓库 Token。
+公开共建数据保存在本仓库 **gh-pages 分支**的 `data/contributions.json`，不写入受保护的 main。**Update contribution snapshot** 使用本仓库自己的 Token，读取公开 Proposal/PR、保存数据并直接部署已有静态网页，不重新构建官网。贡献审核完成、Discussion 变化、收到 `portal-updated` 事件、每小时及手动运行都会触发；无需为数据同步配置跨仓库 Token。手工推送网页产物后需手动运行一次此 Action。
 
 Pages publishing source must be **GitHub Actions**, with `main` and `gh-pages` permitted by the `github-pages` environment. Website source code remains in the separate private website repository. / Pages 发布来源设置为 **GitHub Actions**；`github-pages` 环境允许 main 与 gh-pages 分支部署。网站源码继续保存在独立私有仓库。
