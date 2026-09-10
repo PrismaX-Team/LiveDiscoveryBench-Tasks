@@ -44,3 +44,11 @@ Exactly five top-level parts. Keep build history, baseline implementations and r
 Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. The trusted gate checks structure, Proposal approval and current dual reviews without executing task code; it does not establish scientific validity or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器；可信检查器校验结构、Proposal 批准和当前双审，不执行任务代码，不代表科学有效性或可运行性。详见[共建指南](CONTRIBUTING.md)。
+
+## Website contribution data / 官网共建数据
+
+This repository owns `data/contributions.json` on its `gh-pages` branch. The **Update contribution snapshot** workflow reads public Discussions and PRs, saves the JSON, then deploys the existing static site with the refreshed data. It runs after contribution governance/review workflows, on relevant Discussion events, when website assets are pushed, hourly, and on manual dispatch from `main`. It uses only this repository's `GITHUB_TOKEN`; no cross-repository token is required for data updates.
+
+公开共建数据保存在本仓库 **gh-pages 分支**的 `data/contributions.json`，不写入受保护的 main。**Update contribution snapshot** 使用本仓库自己的 Token，读取公开 Proposal/PR、保存数据并直接部署已有静态网页，不重新构建官网。贡献审核完成、Discussion 变化、网页产物推送、每小时及手动运行都会触发；无需为数据同步配置跨仓库 Token。
+
+Pages publishing source must be **GitHub Actions**, with `main` and `gh-pages` permitted by the `github-pages` environment. Website source code remains in the separate private website repository. / Pages 发布来源设置为 **GitHub Actions**；`github-pages` 环境允许 main 与 gh-pages 分支部署。网站源码继续保存在独立私有仓库。
