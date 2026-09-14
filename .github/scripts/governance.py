@@ -260,6 +260,8 @@ def refresh():
             display = {"approved":"approve", "declined":"decline"}.get(state, state)
             if display in LABELS and {label["name"] for label in row["labels"]["nodes"]} & set(LABELS.values()) != {LABELS[display]}:
                 set_proposal_label(row, display)
+                if display == "needs_reapproval":
+                    notify_reapproval(row)
     failed = False
     for item in prs:
         pr = api(f"repos/{REPO}/pulls/{item['number']}")
@@ -274,6 +276,19 @@ def refresh():
             failed = True
     if failed:
         raise RuntimeError("At least one GitHub check could not complete")
+
+def notify_reapproval(row):
+    """Tell the author that editing an approved Proposal suspended its approval.
+    Called only when the label actually changes, so it posts once per edit."""
+    author = (row.get("author") or {}).get("login")
+    body = (
+        (f"@{author} " if author else "") + "This Proposal was edited after approval, so the approval is suspended and any task PR "
+        "referencing it will not pass Contribution gate until a maintainer runs **Proposal review** again on the current text. "
+        "Reverting the edit does not restore the old approval.\n\n"
+        "提案在获批后被编辑，批准已暂停；引用它的任务 PR 在维护者对当前正文重新运行 **Proposal review** 之前无法通过 Contribution gate。"
+        "把内容改回去也不会恢复原批准。"
+    )
+    gql('mutation($id:ID!,$body:String!){addDiscussionComment(input:{discussionId:$id,body:$body}){comment{id}}}', id=row["id"], body=body)
 
 def set_proposal_label(row, decision):
     names = set(LABELS.values())
@@ -319,7 +334,7 @@ def decide():
         validate_proposal(row)
     record = {"discussion": row["number"], "actor": actor, "decision": decision, "digest": digest(row), "run": os.environ["GITHUB_RUN_ID"]}
     body = MARKER + json.dumps(record) + " -->\n"
-    body += f"Decision / 审核决定: **{decision}** by @{actor}\n\n{reason}\n\n"
+    body += f"@{row['author']['login']} Decision / 审核决定: **{decision}** by @{actor}\n\n{reason}\n\n"
     body += f"[Audit run / 审核运行]({ROOT}/actions/runs/{record['run']})"
     if decision == "approve":
         body += next_steps(row["url"])
