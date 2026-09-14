@@ -300,7 +300,7 @@ def decide():
     record = {"discussion": row["number"], "actor": actor, "decision": decision, "digest": digest(row), "run": os.environ["GITHUB_RUN_ID"]}
     body = MARKER + json.dumps(record) + " -->\n"
     body += f"Decision / 审核决定: **{decision}** by @{actor}\n\n{reason}\n\n"
-    body += f"Approved content fingerprint / 正文摘要 SHA-256: `{record['digest']}`\n\n[Audit run / 审核运行]({ROOT}/actions/runs/{record['run']})"
+    body += f"[Audit run / 审核运行]({ROOT}/actions/runs/{record['run']})"
     if decision == "approve":
         body += f"\n\n[Create task PR / 创建任务 PR]({ROOT}/compare/main...YOUR_BRANCH?expand=1&template=new_task.md). Include `Proposal: {row['url']}`. Editing this proposal requires renewed approval / 修改提案须重新批准。"
     # Invalidate associated PR checks before changing approval authority.
