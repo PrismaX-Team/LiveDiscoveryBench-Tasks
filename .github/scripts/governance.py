@@ -4,6 +4,7 @@ No PR code, dependencies, workflows or verifier entrypoints are executed.
 import hashlib
 import importlib.util
 import json
+import urllib.parse
 import os
 from pathlib import Path
 import re
@@ -280,6 +281,23 @@ def set_proposal_label(row, decision):
     label = api(f"repos/{REPO}/labels/{LABELS[decision]}")
     gql('mutation($id:ID!,$labels:[ID!]!){addLabelsToLabelable(input:{labelableId:$id,labelIds:$labels}){clientMutationId}}', id=row["id"], labels=[label["node_id"]])
 
+def next_steps(proposal_url):
+    """Bilingual instructions for the author after approval. The PR link carries the
+    Proposal line in its body, so the author only picks their fork and branch."""
+    pr_body = urllib.parse.quote(f"Proposal: {proposal_url}\n\n### Implementation / 实现说明\n\n")
+    link = f"{ROOT}/compare/main?expand=1&body={pr_body}"
+    return (
+        "\n\n### Next steps / 下一步\n\n"
+        f"1. Fork this repository, create a branch, and add the five-part task package under `tasks/<task-id>/` (see `tasks/_template`).\n"
+        f"2. Open the PR from the link below: choose **compare across forks**, select your fork and branch, then **Create pull request**. The description already contains the required `Proposal:` line.\n"
+        f"3. If you open the PR another way, its description must include exactly this line: `Proposal: {proposal_url}`\n\n"
+        f"1. Fork 本仓库并新建分支，把五部分任务包放到 `tasks/<task-id>/`（参考 `tasks/_template`）。\n"
+        f"2. 通过下面的链接创建 PR：点击 **compare across forks**，选择你的 fork 和分支，再点 **Create pull request**；正文已带上必需的 `Proposal:` 行。\n"
+        f"3. 若从其他入口创建 PR，正文必须包含这一行：`Proposal: {proposal_url}`\n\n"
+        f"[Create task PR / 创建任务 PR]({link})\n\n"
+        "Editing this proposal invalidates the approval / 修改提案将使批准失效。"
+    )
+
 def decide():
     require(os.environ.get("GITHUB_REF") == "refs/heads/main", "Decisions run only on main")
     # Re-runs retain the original actor's privileges but read the current proposal.
@@ -302,7 +320,7 @@ def decide():
     body += f"Decision / 审核决定: **{decision}** by @{actor}\n\n{reason}\n\n"
     body += f"[Audit run / 审核运行]({ROOT}/actions/runs/{record['run']})"
     if decision == "approve":
-        body += f"\n\n[Create task PR / 创建任务 PR]({ROOT}/compare/main...YOUR_BRANCH?expand=1&template=new_task.md). Include `Proposal: {row['url']}`. Editing this proposal requires renewed approval / 修改提案须重新批准。"
+        body += next_steps(row["url"])
     # Invalidate associated PR checks before changing approval authority.
     for pr in rest_pages("pulls?state=open&base=main"):
         status(pr, "pending", "Proposal decision changed; recheck required")
