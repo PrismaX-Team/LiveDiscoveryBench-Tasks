@@ -370,6 +370,7 @@ def snapshot():
         if not page["pageInfo"]["hasNextPage"]:
             break
         cursor = page["pageInfo"]["endCursor"]
+    merged_new_tasks = {}
     for item in rest_pages("pulls?state=all&base=main"):
         if acceptance(item):
             continue
@@ -386,8 +387,45 @@ def snapshot():
         statuses = rest_pages(f"statuses/{row['head']['sha']}")
         checks = [check for check in statuses if check["context"] == CONTEXT and check["creator"]["login"] == "github-actions[bot]"]
         state = checks[0]["state"] if checks else "pending"
-        result["pullRequests"].append({"number": row["number"], "title": row["title"], "url": row["html_url"], "author": identity(row["user"]), "kind": "new_task" if "type:new-task" in kinds else "task_fix", "state": "merged" if row["merged"] else row["state"], "gate": state if state in ("success", "pending") else "failure", "assignments": [{"role": role, "reviewer": identity({"login": login}), "approved": approved_review(login, reviews, row["head"]["sha"])} for role, login in assigned.items()], "updatedAt": row["updated_at"]})
+        assignments = [{"role": role, "reviewer": identity({"login": login}), "approved": approved_review(login, reviews, row["head"]["sha"])} for role, login in assigned.items()]
+        result["pullRequests"].append({"number": row["number"], "title": row["title"], "url": row["html_url"], "author": identity(row["user"]), "kind": "new_task" if "type:new-task" in kinds else "task_fix", "state": "merged" if row["merged"] else row["state"], "gate": state if state in ("success", "pending") else "failure", "assignments": assignments, "updatedAt": row["updated_at"]})
+        if row["merged"] and "type:new-task" in kinds:
+            # The merged PR that introduced tasks/<id>/ is the authoritative attribution.
+            for changed in rest_pages(f"pulls/{row['number']}/files"):
+                match = re.match(r"^tasks/([a-z0-9][a-z0-9._-]*)/", changed["filename"])
+                if match and match[1] != "_template":
+                    merged_new_tasks.setdefault(match[1], (row, assignments))
+    result["tasks"] = task_entries(merged_new_tasks)
     print(json.dumps(result, ensure_ascii=False, indent=2))
+
+def task_entries(merged_new_tasks):
+    """One entry per registered task package on main. Attribution comes from the merged
+    new-task PR when there is one, otherwise from attribution.json (team-registered tasks)."""
+    repo_root = Path(__file__).resolve().parents[2]
+    registry = {}
+    registry_path = repo_root / "attribution.json"
+    if registry_path.is_file():
+        registry = json.loads(registry_path.read_text()).get("tasks", {})
+    entries = []
+    for package in sorted((repo_root / "tasks").iterdir()):
+        if package.name == "_template" or not (package / "meta.json").is_file():
+            continue
+        meta = json.loads((package / "meta.json").read_text())
+        entry = {"id": meta["id"], "title": meta["title"], "domain": meta["domain"], "source": "pull_request", "pullRequest": None, "authors": [], "reviewers": []}
+        if meta["id"] in merged_new_tasks:
+            row, assignments = merged_new_tasks[meta["id"]]
+            entry["pullRequest"] = row["number"]
+            entry["authors"] = [identity(row["user"])]
+            entry["reviewers"] = [seat["reviewer"] for seat in assignments if seat["approved"]]
+        elif meta["id"] in registry:
+            record = registry[meta["id"]]
+            entry["source"] = "attribution"
+            entry["authors"] = [identity(api(f"users/{login}")) for login in record.get("authors", [])]
+            entry["reviewers"] = [identity(api(f"users/{login}")) for login in record.get("reviewers", [])]
+        else:
+            entry["source"] = "unattributed"
+        entries.append(entry)
+    return entries
 
 if __name__ == "__main__":
     {"refresh": refresh, "decide": decide, "snapshot": snapshot}[sys.argv[1]]()

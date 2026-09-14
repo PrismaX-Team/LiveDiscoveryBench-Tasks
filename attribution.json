@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "description": "Authors and reviewers for tasks that were registered by the project team without a public task PR. Tasks merged through a PR take their attribution from GitHub instead; this file is only consulted when no merged new-task PR exists for the task ID.",
+  "tasks": {
+    "protein_stability_campaign": {
+      "authors": ["robbenplus"],
+      "reviewers": ["PrismaX-Team"],
+      "note": "Built and reviewed by the project team before the public proposal flow opened."
+    }
+  }
+}
