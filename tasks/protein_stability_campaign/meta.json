@@ -1,0 +1,38 @@
+{
+  "id": "protein_stability_campaign",
+  "title": "Protein stability three-round mutation screening",
+  "domain": "biomedicine",
+  "source_id": "question-maker:protein_stability_campaign",
+  "data_sources": [
+    {
+      "name": "Mega-scale experimental analysis of protein folding stability in biology and design",
+      "url": "https://doi.org/10.1038/s41586-023-06328-6"
+    },
+    {
+      "name": "Tsuboyama et al. processed stability dataset v2_230420",
+      "url": "https://doi.org/10.5281/zenodo.7992926"
+    }
+  ],
+  "metric": {
+    "description": "Unweighted mean hidden measured_ddg of the unmeasured final recommendations in final_prospective_batch.csv; lower is better, and values below 0 are stabilizing. Already-measured final picks are a validity contract only. The authoritative result is this raw mean; the linear display transform maps the no-skill bottom line 1.08 to 0 and the reference level -0.35 to 1000, without capping either end. Invalid submissions are not ranked and carry the -100 display placeholder.",
+    "type": "linear_minimize",
+    "transform": {
+      "raw_direction": "minimize",
+      "parameters": {},
+      "anchors": {
+        "lower": {"raw_value": "1.08", "matrix_score": "0"},
+        "reference": {"raw_value": "-0.35", "matrix_score": "1000"}
+      },
+      "invalid_score": "-100",
+      "precision": 50,
+      "rounding": {"decimal_places": 6, "mode": "half_even"}
+    }
+  },
+  "baseline": {
+    "existing_baseline": false,
+    "name": "",
+    "source": "",
+    "score": -0.35,
+    "bottom_line_score": 1.08
+  }
+}

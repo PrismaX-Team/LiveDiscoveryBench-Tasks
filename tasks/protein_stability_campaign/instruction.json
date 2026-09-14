@@ -1,0 +1,44 @@
+{
+  "instructions": "You run a mutation screening campaign over 10 anonymized proteins. A single mutant replaces one amino acid in the protein sequence with another. `measured_ddg` is the experimentally measured change in folding stability: lower is better, and a value below 0 means the mutant is more stable than the wild type.\n\nPublic input is under /input/data. `design_space.csv` lists the 3,953 candidates you are allowed to select. `pilot_assays.csv` gives 399 measurements that were already known before the campaign started. You may run at most three validation rounds. Each round must submit 160 distinct candidates in one request, which is exactly 16 per protein, and no candidate may be repeated across rounds. Every candidate must carry `pred_ddg`, `pred_uncertainty` and `acquisition_type` recorded before that round's validation call, and each later round must use the measurements returned so far to improve its selection.\n\nEach validation request contains `round` and `queries`. `round` must be 1, then 2, then 3. `queries` is that round's array of 160 candidate objects. For each round also keep `results/round_N_batch.csv`, a 192-row `results/round_N_plate_map.csv`, and `results/hypothesis_ledger_round_N.json`. Every ledger entry must cite public pilot measurements or specific measurements returned up to that round, and must state the hypothesis, the supporting evidence, the counterexamples and the next test.\n\nSubmit `results/final_validated_batch.csv` with 8 candidates per protein that were measured during this campaign, and `results/final_prospective_batch.csv` with 8 candidates per protein that were never measured during this campaign, recommended for follow-up, each with a prediction and an uncertainty. The hidden primary score is the unweighted mean of the true `measured_ddg` over every row of `final_prospective_batch.csv`; lower is better. The already-measured final list is a required part of a valid submission but does not enter that score. Plate maps, hypothesis ledgers and the report are required for a valid submission and are not scored. `report/report.md` must explain how the strategy changed across the three rounds, the strength of the evidence, quality control, both final lists and the main risks.\n\nExact column names, counts, plate rules and ledger rules are in /input/data/campaign_constraints.json and /input/data/plate_constraints.json. Every file you must submit has a template at the same relative path under /input. When all files are complete, send one `test` action as your final submission.",
+  "input": [
+    {
+      "path": "data",
+      "format": "directory containing CSV, JSON and Markdown",
+      "description": "Anonymized protein sequences, candidate mutations, 399 public pilot measurements, the three-round count rules, measurement notes and plate constraints."
+    }
+  ],
+  "submission": {
+    "artifacts": [
+      {"path": "results/round_1_batch.csv", "format": "CSV", "description": "Round 1: 160 candidates with predictions recorded before measurement.", "has_template": true},
+      {"path": "results/round_1_plate_map.csv", "format": "CSV", "description": "Round 1: layout of two 96-well plates.", "has_template": true},
+      {"path": "results/hypothesis_ledger_round_1.json", "format": "JSON", "description": "Round 1: evidence, counterexamples and next tests.", "has_template": true},
+      {"path": "results/round_2_batch.csv", "format": "CSV", "description": "Round 2: 160 candidates with predictions recorded before measurement.", "has_template": true},
+      {"path": "results/round_2_plate_map.csv", "format": "CSV", "description": "Round 2: layout of two 96-well plates.", "has_template": true},
+      {"path": "results/hypothesis_ledger_round_2.json", "format": "JSON", "description": "Round 2: evidence, counterexamples and next tests.", "has_template": true},
+      {"path": "results/round_3_batch.csv", "format": "CSV", "description": "Round 3: 160 candidates with predictions recorded before measurement.", "has_template": true},
+      {"path": "results/round_3_plate_map.csv", "format": "CSV", "description": "Round 3: layout of two 96-well plates.", "has_template": true},
+      {"path": "results/hypothesis_ledger_round_3.json", "format": "JSON", "description": "Round 3: evidence, counterexamples and follow-up candidates.", "has_template": true},
+      {"path": "results/final_validated_batch.csv", "format": "CSV", "description": "8 already-measured candidates per protein, 80 in total.", "has_template": true},
+      {"path": "results/final_prospective_batch.csv", "format": "CSV", "description": "8 never-measured follow-up candidates per protein, 80 in total. This file carries the primary score.", "has_template": true},
+      {"path": "report/report.md", "format": "Markdown", "description": "Strategy across the three rounds, evidence, quality control, both final portfolios and risks.", "has_template": true}
+    ]
+  },
+  "environment": [],
+  "requirement": [
+    "Do not use the internet to access, download or query the Tsuboyama/Mega-scale protein stability source data, its mirrors, or any derived data that contains the measured values of this task's candidates. Researching relevant papers, algorithms, software and general methods online is allowed. Network access and final artifacts are subject to audit."
+  ],
+  "limitation": {
+    "cpu": {
+      "cores": 8
+    },
+    "memory": {
+      "gb": 32
+    },
+    "gpu": {
+      "count": 0
+    },
+    "runtime": {
+      "seconds": 14400
+    }
+  }
+}

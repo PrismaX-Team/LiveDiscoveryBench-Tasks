@@ -1,0 +1,11 @@
+episode_id,pilot_count,mean_measured_ddg,stabilizing_rate,region_count,region_coverage,qc_warning_rate,assay_spread
+EPISODE_001,40,0.323443,0.375000,3,C_terminal_quarter|N_terminal_quarter|middle_right,0.000000,3.260410
+EPISODE_002,40,0.389203,0.225000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,3.091588
+EPISODE_003,40,0.607586,0.150000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,2.516857
+EPISODE_004,40,0.315575,0.200000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,2.310711
+EPISODE_005,40,0.394427,0.275000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,1.667957
+EPISODE_006,40,1.009436,0.100000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,2.752787
+EPISODE_007,39,0.759247,0.179487,2,C_terminal_quarter|middle_right,0.000000,4.520070
+EPISODE_008,40,0.573960,0.375000,3,C_terminal_quarter|N_terminal_quarter|middle_right,0.000000,4.317076
+EPISODE_009,40,1.263701,0.150000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,5.375327
+EPISODE_010,40,1.135384,0.225000,4,C_terminal_quarter|N_terminal_quarter|middle_left|middle_right,0.000000,4.017213

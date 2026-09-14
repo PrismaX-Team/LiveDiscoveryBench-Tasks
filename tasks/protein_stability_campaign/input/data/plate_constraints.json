@@ -1,0 +1,58 @@
+{
+  "num_rounds": 3,
+  "plates_per_round": 2,
+  "plate_format": "96-well",
+  "valid_rows": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "valid_columns": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07",
+    "08",
+    "09",
+    "10",
+    "11",
+    "12"
+  ],
+  "wells_per_plate": 96,
+  "total_wells_per_round": 192,
+  "variant_assay_wells_per_round": 160,
+  "control_qc_wells_per_round": 32,
+  "required_well_roles": [
+    "variant_assay",
+    "blank",
+    "wt_control",
+    "positive_control",
+    "qc_repeat"
+  ],
+  "variant_assay_rules": [
+    "Each round plate map must contain exactly 160 variant_assay wells.",
+    "The set of variant_id values in variant_assay wells must match the corresponding round batch exactly.",
+    "Each variant_assay row must include episode_id and variant_id.",
+    "Control and QC wells are not included in validation queries."
+  ],
+  "control_rules": [
+    "Each round plate map must contain exactly 32 non-variant wells.",
+    "Non-variant wells must use blank, wt_control, positive_control, or qc_repeat.",
+    "Non-variant wells should leave variant_id empty and provide a control_label."
+  ],
+  "scientific_layout_rules": [
+    "Each 96-well plate should contain exactly 80 variant_assay wells and 16 control/QC wells.",
+    "Each plate should include all control roles: blank, wt_control, positive_control, and qc_repeat.",
+    "At least 12 control/QC wells per plate should be placed on edge wells to reduce variant exposure to edge effects.",
+    "For every episode, variant wells should be split across both plates in the round rather than all placed on one plate.",
+    "Round batch, round plate map, and assay query log must contain the same variant_id set."
+  ]
+}

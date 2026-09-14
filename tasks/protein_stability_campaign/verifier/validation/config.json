@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "round_count": 3,
+  "episode_count": 10,
+  "batch_size_per_episode": 16,
+  "batch_size_total": 160,
+  "valid_acquisition_types": [
+    "exploit",
+    "explore",
+    "diversity",
+    "risk_control",
+    "hypothesis_test"
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "episodes": [
+    {
+      "episode_id": "EPISODE_001",
+      "sequence": "KDKDLLKGLDQEQANEVIAVLQMHNIEANKIDSGKLGYSITVAEPDFTAAVYWIK",
+      "seq_len": 55,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_002",
+      "sequence": "VFVDDHLLEKVLELNAKGEKRLIKTWSRRSTIVPEMVGHTIAVYNGKQHVPVYITENMVGHKLGEFAP",
+      "seq_len": 68,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_003",
+      "sequence": "ELREAFRLYDKEGNGYISTDVMREILAELDETLSSEDLDAMIDEIDADGSGTVDFEEFMGVMT",
+      "seq_len": 63,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_004",
+      "sequence": "TIDDAFRAIERAIQAENEGRYREALKHFLDGGEMIVTAAEKEASQKVRNLLLHKGKEVLEWAEHLAEWILE",
+      "seq_len": 71,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_005",
+      "sequence": "PREAYIVTIEKGKPGQTVTWYQLRADHPKPDSLISEHPTAQEAMDAKKRYED",
+      "seq_len": 52,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_006",
+      "sequence": "MGMPNRKYADGEVVMGRWPGSVLYYEVQVTSYDDASHLYTVKYKDGTELALKESDIRLQS",
+      "seq_len": 60,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_007",
+      "sequence": "YNLQKLLAPYHKAKTLERQVYELEKLQEKLPEKYKAEYKKKLDQTRVELADQVKS",
+      "seq_len": 55,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_008",
+      "sequence": "DYEVGESVTVMDGPFATLPATISEVNAEQQKLKVLVSIFGRETPVELTFGQVSKI",
+      "seq_len": 55,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_009",
+      "sequence": "MKVIFLKDVKGKGKKGEIKNVADGYANNFLFKQGLAIEATPANLKALE",
+      "seq_len": 48,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    },
+    {
+      "episode_id": "EPISODE_010",
+      "sequence": "SISSRVKSKRIQLGLNQAELAQKVGTTQQSIEQLENGKTKRPRFLPELASALGVSVDWLLN",
+      "seq_len": 61,
+      "numbering": "1-indexed",
+      "mutable_position_count": 22,
+      "batch_size_per_round": 16,
+      "num_rounds": 3,
+      "objective": "Run a low-resource wet-lab stabilizing single-mutant campaign. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+      "final_validated_batch_size": 8,
+      "final_prospective_batch_size": 8
+    }
+  ]
+}

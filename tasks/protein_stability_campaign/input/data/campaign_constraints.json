@@ -1,0 +1,144 @@
+{
+  "episode_count": 10,
+  "candidate_variants_total": 3953,
+  "candidate_variants_by_episode": {
+    "EPISODE_001": 396,
+    "EPISODE_002": 396,
+    "EPISODE_003": 396,
+    "EPISODE_004": 392,
+    "EPISODE_005": 396,
+    "EPISODE_006": 396,
+    "EPISODE_007": 396,
+    "EPISODE_008": 396,
+    "EPISODE_009": 393,
+    "EPISODE_010": 396
+  },
+  "initial_pilot_assays_total": 399,
+  "initial_pilot_assays_by_episode": {
+    "EPISODE_001": 40,
+    "EPISODE_002": 40,
+    "EPISODE_003": 40,
+    "EPISODE_004": 40,
+    "EPISODE_005": 40,
+    "EPISODE_006": 40,
+    "EPISODE_007": 39,
+    "EPISODE_008": 40,
+    "EPISODE_009": 40,
+    "EPISODE_010": 40
+  },
+  "num_rounds": 3,
+  "round_batch_size_per_episode": 16,
+  "round_total_batch_size": 160,
+  "total_wet_lab_queries_per_episode": 48,
+  "total_wet_lab_queries": 480,
+  "plate_budget_abstraction": "Each round uses two 96-well plates: 160 agent-selected variant assay wells plus 32 reserved control/QC wells.",
+  "final_validated_batch_size_per_episode": 8,
+  "final_validated_total_batch_size": 80,
+  "final_prospective_batch_size_per_episode": 8,
+  "final_prospective_total_batch_size": 80,
+  "objective": "Minimize wet-lab measured ddG for single mutants. Lower measured_ddg is better; measured_ddg < 0 is stabilizing relative to WT.",
+  "hidden_score": {
+    "name": "mean_final_ddg",
+    "direction": "minimize",
+    "aggregation": "unweighted_mean",
+    "scored_file": "results/final_prospective_batch.csv",
+    "definition": "Mean hidden measured_ddg of the unmeasured final recommendations. The already-measured final file is required for a valid handoff and does not enter this number."
+  },
+  "measurement_feedback": {
+    "returned_fields": [
+      "measured_ddg",
+      "assay_sd",
+      "qc_status",
+      "is_stabilizing"
+    ],
+    "full_measurement_table_visible": false,
+    "repeat_variant_queries_allowed": false
+  },
+  "round_batch_required_columns": [
+    "episode_id",
+    "rank",
+    "variant_id",
+    "pred_ddg",
+    "pred_uncertainty",
+    "acquisition_type"
+  ],
+  "valid_acquisition_types": [
+    "exploit",
+    "explore",
+    "diversity",
+    "risk_control",
+    "hypothesis_test"
+  ],
+  "plate_map_required_columns": [
+    "round",
+    "plate_id",
+    "well_id",
+    "well_role",
+    "episode_id",
+    "variant_id",
+    "control_label"
+  ],
+  "final_validated_batch_required_columns": [
+    "episode_id",
+    "rank",
+    "variant_id"
+  ],
+  "final_prospective_batch_required_columns": [
+    "episode_id",
+    "rank",
+    "variant_id",
+    "pred_ddg",
+    "pred_uncertainty"
+  ],
+  "query_rules": [
+    "For rounds 1, 2, and 3, write results/round_1_batch.csv, results/round_2_batch.csv, and results/round_3_batch.csv, then send the corresponding round and queries through the framework validation action.",
+    "Each round batch must contain exactly 16 variants per episode from design_space.csv, for 160 variant assays per round.",
+    "Each round row must include episode_id, rank, variant_id, pred_ddg, pred_uncertainty, and acquisition_type.",
+    "acquisition_type must be one of: exploit, explore, diversity, risk_control, hypothesis_test.",
+    "For each round, also write a 192-row plate map with 160 variant_assay wells matching the batch and 32 control/QC wells.",
+    "Do not query the same variant_id more than once across rounds.",
+    "Use returned wet-lab measurements to revise later-round decisions; do not run three independent one-shot screens.",
+    "Submit results/final_validated_batch.csv with exactly 8 previously measured variants per episode.",
+    "Submit results/final_prospective_batch.csv with exactly 8 unmeasured design-space variants per episode.",
+    "Write hypothesis_ledger_round_*.json files that cite only public pilot variants or already returned wet-lab measurements as evidence."
+  ],
+  "hypothesis_ledger_contract": {
+    "top_level_required": [
+      "round",
+      "hypotheses"
+    ],
+    "hypothesis_required": [
+      "episode_id",
+      "claim",
+      "supporting_evidence",
+      "counterexamples",
+      "next_tests"
+    ],
+    "returned_assay_evidence_required": [
+      "variant_id",
+      "measured_ddg",
+      "assay_sd",
+      "qc_status"
+    ],
+    "pilot_evidence_required": [
+      "pilot_variant_id",
+      "measured_ddg"
+    ],
+    "next_test_required": [
+      "variant_id",
+      "reason",
+      "expected_direction"
+    ],
+    "rules": [
+      "round must equal the round number in the file name.",
+      "Every evidence value must match a public pilot row or a measurement returned no later than this round.",
+      "Every next_tests entry for rounds 1 and 2 must appear in the following round batch; round 3 entries must appear in final_prospective_batch.csv.",
+      "expected_direction must be stabilizing, destabilizing, or uncertain."
+    ]
+  },
+  "diversity_guidelines": {
+    "min_distinct_positions_per_episode_per_batch": 12,
+    "min_regions_per_episode_per_batch": 3,
+    "avoid_single_position_or_single_region_collapse": true
+  }
+}

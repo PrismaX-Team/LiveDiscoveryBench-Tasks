@@ -1,0 +1,45 @@
+{
+  "schema_version": "1.0",
+  "task_id": "protein_stability_campaign",
+  "primary_metric_name": "mean_final_ddg",
+  "direction": "minimize",
+  "aggregation": "unweighted_mean",
+  "hidden_label_field": "measured_ddg",
+  "invalid_raw_value": 999.0,
+  "scored_panels": ["prospective"],
+  "panels": {
+    "validated": {
+      "path": "results/final_validated_batch.csv",
+      "per_episode": 8,
+      "must_be_measured": true,
+      "required_columns": ["episode_id", "rank", "variant_id"]
+    },
+    "prospective": {
+      "path": "results/final_prospective_batch.csv",
+      "per_episode": 8,
+      "must_be_measured": false,
+      "required_columns": ["episode_id", "rank", "variant_id", "pred_ddg", "pred_uncertainty"]
+    }
+  },
+  "required_nonempty_artifacts": [
+    "results/round_1_batch.csv",
+    "results/round_1_plate_map.csv",
+    "results/hypothesis_ledger_round_1.json",
+    "results/round_2_batch.csv",
+    "results/round_2_plate_map.csv",
+    "results/hypothesis_ledger_round_2.json",
+    "results/round_3_batch.csv",
+    "results/round_3_plate_map.csv",
+    "results/hypothesis_ledger_round_3.json",
+    "results/final_validated_batch.csv",
+    "results/final_prospective_batch.csv",
+    "report/report.md"
+  ],
+  "notes": [
+    "Primary score is the unweighted mean hidden measured_ddg of the scored final panel.",
+    "invalid_raw_value is the placeholder reported when a submission is invalid. Lower is better here, so it must stay far worse than any achievable mean; never use 0, which would read as a good result.",
+    "The default scored panel is prospective: unmeasured recommendations. Already-measured final picks remain a validity contract because they can be chosen by sorting returned values.",
+    "scored_panels may be set to [\"prospective\"], [\"validated\"], or [\"validated\", \"prospective\"]. Changing it changes the scientific quantity.",
+    "Round measurements, plate maps, ledgers and the report are logged or checked for presence only; they do not enter the primary number."
+  ]
+}
