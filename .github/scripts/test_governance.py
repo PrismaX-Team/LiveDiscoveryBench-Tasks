@@ -104,7 +104,7 @@ class GovernanceTests(unittest.TestCase):
         self.assertFalse(g.approved_review('one',rows,'new'))
     def test_forged_bot_record_and_api_failure(self):
         row=self.proposal(); data=dict(run='1',actor='maintainer',discussion=1,decision='approve',digest=g.digest(row))
-        row['comments']=[dict(author={'login':'github-actions[bot]'}, lastEditedAt=None, createdAt='2026-09-08T01:00:00Z', body=g.MARKER+json.dumps(data)+' -->')]
+        row['comments']=[dict(author={'login':'github-actions'}, lastEditedAt=None, createdAt='2026-09-08T01:00:00Z', body=g.MARKER+json.dumps(data)+' -->')]
         g._run_cache.clear()
         with patch.object(g,'api',return_value={'path':'.github/workflows/forged.yml'}): self.assertIsNone(g.decision_record(row))
         g._run_cache.clear()

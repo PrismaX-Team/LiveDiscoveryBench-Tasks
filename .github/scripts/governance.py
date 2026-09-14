@@ -116,11 +116,13 @@ def validate_proposal(row):
         variants = (label, label.replace("Science Innovation Exam", "LiveDiscoveryBench"))
         require(any(normalize(variant) in [normalize(value) for value in checked] for variant in variants), "Both material permissions and publication consent are required")
 
+BOT_LOGINS = {"github-actions", "github-actions[bot]"}
 _run_cache = {}
 def decision_record(row):
     records = []
     for comment in row["comments"]:
-        if (comment.get("author") or {}).get("login") != "github-actions[bot]" or comment["lastEditedAt"] or not comment["body"].startswith(MARKER):
+        # GraphQL reports the Actions bot as "github-actions"; REST uses "github-actions[bot]".
+        if (comment.get("author") or {}).get("login") not in BOT_LOGINS or comment["lastEditedAt"] or not comment["body"].startswith(MARKER):
             continue
         try:
             record = json.loads(comment["body"].split(" -->", 1)[0][len(MARKER):])
