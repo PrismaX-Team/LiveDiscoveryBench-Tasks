@@ -103,7 +103,9 @@ def validate_proposal(row):
         require(explanation and explanation != "_No response_", "This metric requires an explanation")
     sources = values.get("References", "")
     if sources and sources != "_No response_":
-        require(len(sources.splitlines()) <= 20 and all(re.fullmatch(r"https://[^\s]+", line.strip()) for line in sources.splitlines()), "References must be up to 20 HTTPS links, one per line")
+        # Authors often separate links with blank lines; only non-empty lines count.
+        links = [line.strip() for line in sources.splitlines() if line.strip()]
+        require(len(links) <= 20 and all(re.fullmatch(r"https://[^\s]+", line) for line in links), "References must be up to 20 HTTPS links, one per line")
     consent_body = values.get("Permissions", "")
     # Markdown checkboxes may wrap onto multiple lines after bilingual layout changes.
     checked = re.findall(r"^- \[[xX]\] ([\s\S]*?)(?=^- \[[ xX]\] |\Z)", consent_body, re.M)

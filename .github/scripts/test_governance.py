@@ -20,6 +20,14 @@ class GovernanceTests(unittest.TestCase):
         g.validate_proposal(row)
         row['body'] = row['body'].replace('### Additional explanation\n\nResearch evidence', '### Additional explanation\n\n_No response_')
         with self.assertRaises(ValueError): g.validate_proposal(row)
+    def test_references_allow_blank_lines_between_links(self):
+        row = self.proposal()
+        links = '\n\n'.join(f'https://example.org/{i}' for i in range(3))
+        base = row['body']
+        row['body'] = base + f'\n\n### References / 参考材料\n\n{links}\n'
+        g.validate_proposal(row)
+        row['body'] = base + '\n\n### References / 参考材料\n\nhttps://example.org/0\n\nsee the paper above\n'
+        with self.assertRaises(ValueError): g.validate_proposal(row)
     def test_missing_consent(self):
         row = self.proposal(); row['body'] = row['body'].replace('- [X]', '- [ ]')
         with self.assertRaises(ValueError): g.validate_proposal(row)
