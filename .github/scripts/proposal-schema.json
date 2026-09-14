@@ -40,7 +40,7 @@
       "id": "domain",
       "label": "Scientific domain",
       "required": true,
-      "max": 100
+      "max": 200
     },
     {
       "id": "scientificQuestion",
