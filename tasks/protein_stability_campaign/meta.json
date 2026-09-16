@@ -2,8 +2,7 @@
   "id": "protein_stability_campaign",
   "title": "Protein stability three-round mutation screening",
   "domain": "biomedicine",
-  "source_id": "question-maker:protein_stability_campaign",
-  "data_sources": [
+  "task_sources": [
     {
       "name": "Mega-scale experimental analysis of protein folding stability in biology and design",
       "url": "https://doi.org/10.1038/s41586-023-06328-6"

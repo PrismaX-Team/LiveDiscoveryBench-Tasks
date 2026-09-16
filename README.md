@@ -35,7 +35,7 @@ tasks/<task-id>/
 - `environment/environment.json`: required executable environment contract (`default` or `containerfile`). / 必需的可执行环境合同。
 - `verifier/validation/run/main.py`: research feedback via `--input`, `--request`, `--response`. / 研究期间反馈入口。
 - `verifier/test/run/main.py`: frozen-submission scoring via `--input`, `--submission`, `--result`. / 冻结提交后的最终评分入口。
-- `meta.json`: task identity, immutable construction source, data sources, raw metric, optional conversion and measured baseline. / 任务身份、不可变构造来源、数据来源、原始指标及可选转换与实测 baseline。
+- `meta.json`: task identity, task sources, raw metric, optional conversion and measured baseline. / 任务身份、任务来源、原始指标及可选转换与实测 baseline。
 
 Exactly five top-level parts. Keep build history, baseline implementations and review reports outside the package. Both verifier entries are required; `verifier/run/main.py` is obsolete. The framework supplies the shared run-local `VerifyContext`; this repository does not provide an evaluation runtime.
 

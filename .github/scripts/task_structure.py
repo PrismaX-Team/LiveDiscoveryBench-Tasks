@@ -93,12 +93,11 @@ def check_package(root):
         require(file.is_file() and file.stat().st_size > 0, "Missing nonempty Containerfile")
 
     meta = read_object(root / "meta.json")
-    for key in ("id", "title", "domain", "source_id"):
+    for key in ("id", "title", "domain"):
         require(isinstance(meta.get(key), str) and meta[key].strip(), f"Missing meta.{key}")
     require(re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,127}", meta["id"]), "Invalid task ID")
     require(root.name == "_template" or meta["id"] == root.name, "Task ID must match directory")
-    require(re.fullmatch(r"[a-z][a-z0-9+.-]*:[^\s]+", meta["source_id"]), "Invalid source_id namespace")
-    require(isinstance(meta.get("data_sources"), list), "data_sources must be an array")
+    require(isinstance(meta.get("task_sources"), list), "task_sources must be an array")
     metric = meta.get("metric")
     require(isinstance(metric, dict) and isinstance(metric.get("description"), str) and metric["description"].strip(),
             "Metric description required")
