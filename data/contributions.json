@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-17T08:40:35.056122Z",
+  "updatedAt": "2026-09-17T09:10:29.494832Z",
   "proposals": [
     {
       "number": 6,
@@ -17,7 +17,7 @@
         {
           "name": "vaporhug",
           "githubLogin": "vaporhug",
-          "image": null,
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
           "githubUrl": "https://github.com/vaporhug"
         }
       ],
@@ -38,7 +38,7 @@
         {
           "name": "vaporhug",
           "githubLogin": "vaporhug",
-          "image": null,
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
           "githubUrl": "https://github.com/vaporhug"
         }
       ],
@@ -59,7 +59,7 @@
         {
           "name": "vaporhug",
           "githubLogin": "vaporhug",
-          "image": null,
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
           "githubUrl": "https://github.com/vaporhug"
         }
       ],
@@ -67,7 +67,45 @@
       "updatedAt": "2026-09-17T08:38:36Z"
     }
   ],
-  "pullRequests": [],
+  "pullRequests": [
+    {
+      "number": 8,
+      "title": "[New Task] Synthesis-Constrained Multi-Objective Molecular Optimization",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/pull/8",
+      "author": {
+        "name": "lulaiao",
+        "githubLogin": "lulaiao",
+        "image": "https://avatars.githubusercontent.com/u/75672201?v=4",
+        "githubUrl": "https://github.com/lulaiao"
+      },
+      "kind": "new_task",
+      "state": "open",
+      "gate": "failure",
+      "assignments": [
+        {
+          "role": "domain",
+          "reviewer": {
+            "name": "DrugD",
+            "githubLogin": "DrugD",
+            "image": "https://avatars.githubusercontent.com/u/37626451?v=4",
+            "githubUrl": "https://github.com/DrugD"
+          },
+          "approved": false
+        },
+        {
+          "role": "technical",
+          "reviewer": {
+            "name": "vaporhug",
+            "githubLogin": "vaporhug",
+            "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+            "githubUrl": "https://github.com/vaporhug"
+          },
+          "approved": false
+        }
+      ],
+      "updatedAt": "2026-09-17T09:10:24Z"
+    }
+  ],
   "tasks": [
     {
       "id": "protein_stability_campaign",
