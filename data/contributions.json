@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-17T08:38:51.321180Z",
+  "updatedAt": "2026-09-17T08:39:22.554128Z",
   "proposals": [
     {
       "number": 5,
@@ -15,10 +15,10 @@
       },
       "reviewers": [
         {
-          "name": "DrugD",
-          "githubLogin": "DrugD",
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
           "image": null,
-          "githubUrl": "https://github.com/DrugD"
+          "githubUrl": "https://github.com/vaporhug"
         }
       ],
       "status": "approved",
