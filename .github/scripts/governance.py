@@ -20,6 +20,9 @@ CONTEXT = "Contribution gate"
 MARKER = "<!-- ldb-proposal-decision "
 LABELS = {"approve": "proposal:approved", "changes_requested": "proposal:changes-requested", "decline": "proposal:declined", "submitted": "proposal:submitted", "needs_reapproval": "proposal:needs-reapproval"}
 
+class Pending(ValueError):
+    """Requirements not yet checkable because a maintainer step is still due; reported as pending, not failure."""
+
 def require(condition, message):
     if not condition:
         raise ValueError(message)
@@ -189,6 +192,8 @@ def approved_review(login, reviews, sha):
 
 def confirmed_kind(pr):
     types = {label["name"] for label in pr["labels"] if label["name"].startswith("type:")}
+    if not types:
+        raise Pending("Awaiting maintainer type label / 等待维护者确认类型标签")
     require(len(types) == 1 and types <= {"type:new-task", "type:task-fix", "type:maintenance"}, "One supported type label is required")
     kind = next(iter(types))
     events = rest_pages(f"issues/{pr['number']}/events")
@@ -270,6 +275,8 @@ def refresh():
         try:
             message = gate(pr)
             status(pr, "success", message)
+        except Pending as error:
+            status(pr, "pending", str(error))
         except ValueError as error:
             status(pr, "failure", str(error))
             print(f"PR #{pr['number']}: requirements unmet")
@@ -354,9 +361,20 @@ def decide():
     set_proposal_label(row, decision)
     require(digest(discussion(row["number"])) == record["digest"], "Proposal changed during decision; approval invalid")
 
+_avatars = {}
+
 def identity(user):
     login = user["login"] if user else "ghost"
-    return {"name": login, "githubLogin": login, "image": (user.get("avatarUrl") or user.get("avatar_url")) if user else None, "githubUrl": f"https://github.com/{login}"}
+    image = (user.get("avatarUrl") or user.get("avatar_url")) if user else None
+    if user and not image:
+        # Approval records and /reviewers comments carry only the login; resolve the avatar once per login.
+        if login not in _avatars:
+            try:
+                _avatars[login] = api(f"users/{login}").get("avatar_url")
+            except HTTPError:
+                _avatars[login] = None
+        image = _avatars[login]
+    return {"name": login, "githubLogin": login, "image": image, "githubUrl": f"https://github.com/{login}"}
 
 def acceptance(row):
     return row["title"].startswith("[ACCEPTANCE]") or any(label["name"] == "acceptance" for label in (row["labels"]["nodes"] if isinstance(row["labels"], dict) else row["labels"]))

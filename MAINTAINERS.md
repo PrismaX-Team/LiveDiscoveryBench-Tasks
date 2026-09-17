@@ -24,7 +24,7 @@ Always use **Run workflow** for a new decision. **Re-run jobs** is rejected, eve
 | [Task fix / 任务修复](.github/PULL_REQUEST_TEMPLATE/task_fix.md) | `type:task-fix` | `Task: EXISTING_TASK_ID` |
 | [Maintenance / 仓库维护](.github/PULL_REQUEST_TEMPLATE/maintenance.md) | `type:maintenance` | Describe scope / 说明范围 |
 
-A maintainer confirms exactly one type label. New tasks must match an open, currently approved Proposal in this repository, with the same author. New-task/fix PRs change exactly one task and cannot mix in repository policy changes. Fixes refer to an existing task without another Proposal. Maintenance uses ordinary GitHub review, cannot introduce tasks, and stays off the task board. Scientific/scoring changes belong in task fixes; do not reclassify them as maintenance.
+A maintainer confirms exactly one type label; until then the Contribution gate stays **pending** (not failed) and the PR is not yet listed on the public board. New tasks must match an open, currently approved Proposal in this repository, with the same author. New-task/fix PRs change exactly one task and cannot mix in repository policy changes. Fixes refer to an existing task without another Proposal. Maintenance uses ordinary GitHub review, cannot introduce tasks, and stays off the task board. Scientific/scoring changes belong in task fixes; do not reclassify them as maintenance.
 
 维护者确认唯一类型标签。新增任务须关联本仓库仍开放、有效获批且作者相同的 Proposal。新增/修复只修改一道任务，不混入仓库策略。修复关联已有任务，无需再提 Proposal。维护采用普通 GitHub 审核，不得新增任务且不进入任务看板；科学内容及评分变更应走任务修复。
 
