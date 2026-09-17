@@ -2,9 +2,11 @@
 
 Task contribution repository for Science Innovation Exam. / Science Innovation Exam 任务共建仓库。
 
-[Official portal / 官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/) · [Submit Proposal / 提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
+[Official portal / 官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/) · [Submit Proposal / 提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals) · [How to submit a task PR / 如何提交任务 PR](CONTRIBUTING.md)
 
 ## Contribute / 参与共建
+
+Submit a Proposal first. Once it is approved, follow [CONTRIBUTING.md](CONTRIBUTING.md): copy `tasks/_template/`, optionally let an AI agent build the package with the skill in `contributor/build-sie-task-package/`, run the local check, and open a PR from your fork. / 先提交 Proposal；获批后按[共建指南](CONTRIBUTING.md)操作：复制 `tasks/_template/`，可用 `contributor/build-sie-task-package/` 中的 Skill 让 AI 协助构建，运行本地检查，再从 fork 提交 PR。
 
 | PR purpose / 用途 | Label / 标签 | Required link / 关联信息 |
 | --- | --- | --- |
@@ -12,9 +14,9 @@ Task contribution repository for Science Innovation Exam. / Science Innovation E
 | Task fix / 任务修复 | `type:task-fix` | Existing task ID and problem / 已有任务 ID 及问题 |
 | Repository maintenance / 仓库维护 | `type:maintenance` | Maintenance scope; no Proposal / 维护范围，无需 Proposal |
 
-Classify by the change, not the author's role. Maintainers adding tasks also need approved Proposals. Choose a [PR template](CONTRIBUTING.md#templates); a maintainer confirms exactly one type label.
+Classify by the change, not the author's role. Maintainers adding tasks also need approved Proposals. Choose a [PR template](CONTRIBUTING.md#templates); a maintainer confirms exactly one type label. Step-by-step instructions are in [CONTRIBUTING.md](CONTRIBUTING.md); maintainer rules are in [MAINTAINERS.md](MAINTAINERS.md).
 
-按改动用途而非作者身份分类；管理员新增任务也需获批 Proposal。选择 [PR 模板](CONTRIBUTING.md#templates)，由维护者确认唯一类型标签。
+按改动用途而非作者身份分类；管理员新增任务也需获批 Proposal。选择 [PR 模板](CONTRIBUTING.md#templates)，由维护者确认唯一类型标签。分步说明见[共建指南](CONTRIBUTING.md)，维护者规则见 [MAINTAINERS.md](MAINTAINERS.md)。
 
 ## Task package / 任务包
 
@@ -41,9 +43,9 @@ Exactly five top-level parts. Keep build history, baseline implementations and r
 
 顶层严格五部分；构造历史、baseline 实现及审核报告放在包外。双入口均必需，旧 `verifier/run/main.py` 不再使用。共享的 Run-local `VerifyContext` 由框架提供，本仓库不提供评测运行环境。
 
-Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. The trusted gate checks structure, Proposal approval and current dual reviews without executing task code; it does not establish scientific validity or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
+Copy `tasks/_template/`, rename it and replace all placeholders. The template deliberately has no working scientific verifier. `contributor/build-sie-task-package/` is a skill for AI coding agents that fills the package from an approved Proposal and bundles the contract schemas and a local checker (`scripts/check_package.py`). The trusted gate checks structure, Proposal approval and current dual reviews without executing task code; it does not establish scientific validity or runtime readiness. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
-复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器；可信检查器校验结构、Proposal 批准和当前双审，不执行任务代码，不代表科学有效性或可运行性。详见[共建指南](CONTRIBUTING.md)。
+复制 `tasks/_template/`、重命名并替换占位内容。模板不提供可用的科学评分器。`contributor/build-sie-task-package/` 是给 AI 编程助手的 Skill，可根据获批 Proposal 填写任务包，并附带合同 schema 与本地检查脚本（`scripts/check_package.py`）。可信检查器校验结构、Proposal 批准和当前双审，不执行任务代码，不代表科学有效性或可运行性。详见[共建指南](CONTRIBUTING.md)。
 
 ## Website contribution data / 官网共建数据
 
