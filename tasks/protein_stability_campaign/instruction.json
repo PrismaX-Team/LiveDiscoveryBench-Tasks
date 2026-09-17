@@ -7,22 +7,80 @@
       "description": "Anonymized protein sequences, candidate mutations, 399 public pilot measurements, the three-round count rules, measurement notes and plate constraints."
     }
   ],
-  "submission": {
-    "artifacts": [
-      {"path": "results/round_1_batch.csv", "format": "CSV", "description": "Round 1: 160 candidates with predictions recorded before measurement.", "has_template": true},
-      {"path": "results/round_1_plate_map.csv", "format": "CSV", "description": "Round 1: layout of two 96-well plates.", "has_template": true},
-      {"path": "results/hypothesis_ledger_round_1.json", "format": "JSON", "description": "Round 1: evidence, counterexamples and next tests.", "has_template": true},
-      {"path": "results/round_2_batch.csv", "format": "CSV", "description": "Round 2: 160 candidates with predictions recorded before measurement.", "has_template": true},
-      {"path": "results/round_2_plate_map.csv", "format": "CSV", "description": "Round 2: layout of two 96-well plates.", "has_template": true},
-      {"path": "results/hypothesis_ledger_round_2.json", "format": "JSON", "description": "Round 2: evidence, counterexamples and next tests.", "has_template": true},
-      {"path": "results/round_3_batch.csv", "format": "CSV", "description": "Round 3: 160 candidates with predictions recorded before measurement.", "has_template": true},
-      {"path": "results/round_3_plate_map.csv", "format": "CSV", "description": "Round 3: layout of two 96-well plates.", "has_template": true},
-      {"path": "results/hypothesis_ledger_round_3.json", "format": "JSON", "description": "Round 3: evidence, counterexamples and follow-up candidates.", "has_template": true},
-      {"path": "results/final_validated_batch.csv", "format": "CSV", "description": "8 already-measured candidates per protein, 80 in total.", "has_template": true},
-      {"path": "results/final_prospective_batch.csv", "format": "CSV", "description": "8 never-measured follow-up candidates per protein, 80 in total. This file carries the primary score.", "has_template": true},
-      {"path": "report/report.md", "format": "Markdown", "description": "Strategy across the three rounds, evidence, quality control, both final portfolios and risks.", "has_template": true}
-    ]
-  },
+  "submission": [
+    {
+      "path": "results/round_1_batch.csv",
+      "format": "CSV",
+      "description": "Round 1: 160 candidates with predictions recorded before measurement.",
+      "has_template": true
+    },
+    {
+      "path": "results/round_1_plate_map.csv",
+      "format": "CSV",
+      "description": "Round 1: layout of two 96-well plates.",
+      "has_template": true
+    },
+    {
+      "path": "results/hypothesis_ledger_round_1.json",
+      "format": "JSON",
+      "description": "Round 1: evidence, counterexamples and next tests.",
+      "has_template": true
+    },
+    {
+      "path": "results/round_2_batch.csv",
+      "format": "CSV",
+      "description": "Round 2: 160 candidates with predictions recorded before measurement.",
+      "has_template": true
+    },
+    {
+      "path": "results/round_2_plate_map.csv",
+      "format": "CSV",
+      "description": "Round 2: layout of two 96-well plates.",
+      "has_template": true
+    },
+    {
+      "path": "results/hypothesis_ledger_round_2.json",
+      "format": "JSON",
+      "description": "Round 2: evidence, counterexamples and next tests.",
+      "has_template": true
+    },
+    {
+      "path": "results/round_3_batch.csv",
+      "format": "CSV",
+      "description": "Round 3: 160 candidates with predictions recorded before measurement.",
+      "has_template": true
+    },
+    {
+      "path": "results/round_3_plate_map.csv",
+      "format": "CSV",
+      "description": "Round 3: layout of two 96-well plates.",
+      "has_template": true
+    },
+    {
+      "path": "results/hypothesis_ledger_round_3.json",
+      "format": "JSON",
+      "description": "Round 3: evidence, counterexamples and follow-up candidates.",
+      "has_template": true
+    },
+    {
+      "path": "results/final_validated_batch.csv",
+      "format": "CSV",
+      "description": "8 already-measured candidates per protein, 80 in total.",
+      "has_template": true
+    },
+    {
+      "path": "results/final_prospective_batch.csv",
+      "format": "CSV",
+      "description": "8 never-measured follow-up candidates per protein, 80 in total. This file carries the primary score.",
+      "has_template": true
+    },
+    {
+      "path": "report/report.md",
+      "format": "Markdown",
+      "description": "Strategy across the three rounds, evidence, quality control, both final portfolios and risks.",
+      "has_template": true
+    }
+  ],
   "environment": [],
   "requirement": [
     "Do not use the internet to access, download or query the Tsuboyama/Mega-scale protein stability source data, its mirrors, or any derived data that contains the measured values of this task's candidates. Researching relevant papers, algorithms, software and general methods online is allowed. Network access and final artifacts are subject to audit."

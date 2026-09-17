@@ -20,7 +20,6 @@ from campaign_contract import (  # noqa: E402
     STATE_KEY,
     load_config,
     load_observations,
-    read_csv,
     validate_state,
 )
 from final_score import (  # noqa: E402
@@ -36,18 +35,9 @@ class SubmissionError(ValueError):
     pass
 
 
-def same_number(left: Any, right: Any) -> bool:
-    try:
-        return abs(float(left) - float(right)) <= 1e-9
-    except (TypeError, ValueError):
-        return False
-
-
-def validate_round_batches(
-    submission_root: Path,
-    state: dict[str, Any],
-    config: dict[str, Any],
-) -> set[str]:
+def measured_ids_from_state(state: dict[str, Any], config: dict[str, Any]) -> set[str]:
+    # Official measurement history is the locked validation Context, not the
+    # submitted round CSVs. Those files are required artifacts, not a replay lock.
     if len(state["accepted_rounds"]) != int(config["round_count"]):
         raise SubmissionError("all three validation rounds must be completed before test")
     prior_ids: set[str] = set()
@@ -58,25 +48,10 @@ def validate_round_batches(
         results = record.get("results")
         if not isinstance(queries, list) or not isinstance(results, list):
             raise SubmissionError("trusted validation history is incomplete")
-        submitted = read_csv(
-            submission_root / "results" / ("round_%d_batch.csv" % expected_round)
-        )
-        if len(submitted) != len(queries):
-            raise SubmissionError("submitted round batch differs from accepted validation")
-        submitted_by_id = {row.get("variant_id", ""): row for row in submitted}
-        if len(submitted_by_id) != len(submitted):
-            raise SubmissionError("submitted round batch repeats a variant")
         for query in queries:
             variant_id = str(query.get("variant_id", ""))
-            row = submitted_by_id.get(variant_id)
-            if row is None or variant_id in prior_ids:
-                raise SubmissionError("submitted round batch differs from accepted validation")
-            exact = ("episode_id", "variant_id", "acquisition_type", "rationale")
-            numeric = ("rank", "pred_ddg", "pred_uncertainty")
-            if any(str(row.get(field, "")).strip() != str(query.get(field, "")).strip() for field in exact):
-                raise SubmissionError("submitted round batch changed after validation")
-            if any(not same_number(row.get(field), query.get(field)) for field in numeric):
-                raise SubmissionError("submitted round predictions changed after validation")
+            if not variant_id or variant_id in prior_ids:
+                raise SubmissionError("trusted validation history is malformed")
             prior_ids.add(variant_id)
     if prior_ids != set(str(item) for item in state["queried_variant_ids"]):
         raise SubmissionError("trusted validation query index is inconsistent")
@@ -97,7 +72,7 @@ def score(input_root: Path, submission_root: Path) -> dict[str, Any]:
     campaign_config = load_config(VERIFIER_ROOT)
     score_config = load_score_config(VERIFIER_ROOT)
     state = validate_state(VerifyContext.current().get(STATE_KEY), campaign_config)
-    measured_ids = validate_round_batches(submission_root, state, campaign_config)
+    measured_ids = measured_ids_from_state(state, campaign_config)
     observations = load_observations(VERIFIER_ROOT)
     details = score_final_candidates(submission_root, observations, measured_ids, score_config)
     return details

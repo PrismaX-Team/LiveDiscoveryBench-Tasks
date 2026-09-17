@@ -76,8 +76,24 @@ class PackageTests(unittest.TestCase):
         (self.root / "input/submission.json").unlink()
         with self.assertRaises(ValueError):
             checker.check_package(self.root)
-        self.update("instruction.json", submission={"artifacts": [{"path": "submission.json", "format": "json", "description": "Output", "has_template": False}]})
+        self.update("instruction.json", submission=[{"path": "submission.json", "format": "json", "description": "Output", "has_template": False}])
         checker.check_package(self.root)
+
+    def test_wrapped_submission_object_rejected(self):
+        self.update("instruction.json", submission={"artifacts": [{"path": "submission.json", "format": "json", "description": "Output"}]})
+        with self.assertRaisesRegex(ValueError, "submission must be a nonempty array"):
+            checker.check_package(self.root)
+
+    def test_metric_transform_follows_type(self):
+        metric = {"description": "Lower is better.", "type": "linear_minimize"}
+        self.update("meta.json", metric=metric)
+        checker.check_package(self.root)
+        self.update("meta.json", metric={**metric, "type": None, "transform": {}})
+        with self.assertRaisesRegex(ValueError, "must not carry metric.transform"):
+            checker.check_package(self.root)
+        self.update("meta.json", metric={**metric, "type": "power_minimize"})
+        with self.assertRaisesRegex(ValueError, "requires metric.transform"):
+            checker.check_package(self.root)
 
     def test_old_instruction_field_rejected(self):
         self.update("instruction.json", custom_environment=[])

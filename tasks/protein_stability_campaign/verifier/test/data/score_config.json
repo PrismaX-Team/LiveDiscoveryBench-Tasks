@@ -40,6 +40,6 @@
     "invalid_raw_value is the placeholder reported when a submission is invalid. Lower is better here, so it must stay far worse than any achievable mean; never use 0, which would read as a good result.",
     "The default scored panel is prospective: unmeasured recommendations. Already-measured final picks remain a validity contract because they can be chosen by sorting returned values.",
     "scored_panels may be set to [\"prospective\"], [\"validated\"], or [\"validated\", \"prospective\"]. Changing it changes the scientific quantity.",
-    "Round measurements, plate maps, ledgers and the report are logged or checked for presence only; they do not enter the primary number."
+    "Round CSVs, plate maps, ledgers and the report are required files and may be logged; they do not have to replay the locked validation requests, and they do not enter the primary number."
   ]
 }
