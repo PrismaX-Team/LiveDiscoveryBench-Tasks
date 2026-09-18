@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-18T08:52:14.240111Z",
+  "updatedAt": "2026-09-18T08:55:43.998475Z",
   "proposals": [
+    {
+      "number": 10,
+      "title": "[Proposal]",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/10",
+      "author": {
+        "name": "Zhy-NJU",
+        "githubLogin": "Zhy-NJU",
+        "image": "https://avatars.githubusercontent.com/u/324487898?v=4",
+        "githubUrl": "https://github.com/Zhy-NJU"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-18T08:55:31Z"
+    },
     {
       "number": 9,
       "title": "[Proposal]",
