@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-19T01:17:01.044049Z",
+  "updatedAt": "2026-09-19T01:22:09.386821Z",
   "proposals": [
+    {
+      "number": 16,
+      "title": "[Proposal] 有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/16",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-19T01:21:59Z"
+    },
     {
       "number": 15,
       "title": "[Proposal] 面向新配体的过渡金属配合物自旋能隙外推预测",
