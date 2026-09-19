@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-19T00:57:34.612547Z",
+  "updatedAt": "2026-09-19T01:08:38.460582Z",
   "proposals": [
+    {
+      "number": 15,
+      "title": "[Proposal] 面向新配体的过渡金属配合物自旋能隙外推预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/15",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-19T01:08:27Z"
+    },
     {
       "number": 14,
       "title": "[Proposal] 有限标签查询预算下近简并多自旋过渡金属候选的主动发现",
