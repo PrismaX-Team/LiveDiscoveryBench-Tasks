@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-19T00:17:19.965262Z",
+  "updatedAt": "2026-09-19T00:50:48.593899Z",
   "proposals": [
+    {
+      "number": 13,
+      "title": "[Proposal] 固定电子结构协议下过渡金属配合物自旋能隙的代理预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/13",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-19T00:50:38Z"
+    },
     {
       "number": 12,
       "title": "[Proposal]",
