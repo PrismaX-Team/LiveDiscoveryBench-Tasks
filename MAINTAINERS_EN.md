@@ -6,7 +6,7 @@ Governance rules for maintainers and reviewers. Contributors should read the [co
 
 ## Proposal review
 
-Proposals arrive as bilingual Discussions in the Proposals category. GitHub accounts identify authors; no private email is collected. Bodies, links and comments are public. The metric explanation is always visible and required for custom, raw-only or unclassified metrics. Both permission confirmations are always required, including after revisions.
+Proposals arrive as Discussions in the Proposals category. GitHub accounts identify authors; no private email is collected. Bodies, links and comments are public. The metric explanation is always visible and required for custom, raw-only or unclassified metrics. Both permission confirmations are always required, including after revisions.
 
 A maintainer other than the author runs **Proposal review** on `main`, supplying the Discussion number, the decision and a public reason (20–5000 characters). The Action checks permission and records the actor, decision, exact content fingerprint and run link. Labels display status only and are not approval evidence. Editing approved content, including reverting an edit, requires renewed approval. The original author then opens the task PR; there is no website binding step.
 

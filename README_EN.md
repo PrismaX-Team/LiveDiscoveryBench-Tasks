@@ -5,15 +5,11 @@
 **A live scientific benchmark for research agents · task contribution repository**
 
 [![Official Site](https://img.shields.io/badge/Official%20Site-Science%20Innovation%20Exam-333399?logo=googlechrome&logoColor=white)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/)
-[![Submit Proposal](https://img.shields.io/badge/Submit-Proposal-2ea44f?logo=github&logoColor=white)](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
-[![Task Contract](https://img.shields.io/badge/Task-Contract-8b5cf6)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/contribute/task-contract/)
-[![Contribution Board](https://img.shields.io/badge/Contribution-Board-f59e0b)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/contribute/#contribution-activity)
-[![Leaderboard](https://img.shields.io/badge/Leaderboard-Results-0ea5e9)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/leaderboard/)
-[![GitHub Stars](https://img.shields.io/github/stars/PrismaX-Team/LiveDiscoveryBench-Tasks?style=social)](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks)
+[![Contribute](https://img.shields.io/badge/Contribute-Portal%20page-2ea44f?logo=googlechrome&logoColor=white)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/contribute/)
 
 [简体中文](README.md) | **English**
 
-[What is SIE](#-what-is-science-innovation-exam) · [How to contribute](#-how-to-contribute) · [Task package](#-task-package) · [Repository map](#%EF%B8%8F-repository-map) · [Automated checks](#-automated-checks) · [Portal data](#-portal-contribution-data)
+[What is SIE](#-what-is-science-innovation-exam) · [How to contribute](#-how-to-contribute) · [Task package](#-task-package) · [Repository map](#%EF%B8%8F-repository-map)
 
 </div>
 
@@ -21,7 +17,7 @@
 
 Science Innovation Exam (SIE) evaluates whether research agents can independently investigate **real, unresolved frontier scientific problems** in an open environment, propose and validate improvements, and make measurable progress.
 
-This repository is the **task contribution entry point** for SIE: task Proposals are discussed and reviewed here in public, task packages enter the benchmark through pull requests, review records live directly on GitHub, and the portal's contribution data is generated from here. No extra account is needed: one GitHub account lets you submit, review and be credited.
+This repository is the **task contribution entry point** for SIE: task Proposals are discussed and reviewed here in public, task packages enter the benchmark through pull requests, and review records live directly on GitHub. One GitHub account lets you submit, review and be credited.
 
 ## 🔬 What is Science Innovation Exam
 
@@ -42,7 +38,7 @@ Most benchmarks measure what a model **knows**; SIE measures what an agent can *
 </tr>
 </table>
 
-Scientific standards, task examples and current results are on the [official portal](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/).
+Scientific standards and task examples are on the [official portal](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/).
 
 ## 🚀 How to contribute
 
@@ -70,7 +66,7 @@ flowchart LR
 
 | Step | What you do | Where |
 | --- | --- | --- |
-| 1. Propose a task | Describe the scientific question, data sources, metric and permissions in the bilingual form | [Submit Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals) |
+| 1. Propose a task | Describe the scientific question, data sources, metric and permissions | [Submit Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals) |
 | 2. Build the package | Fork the repository, copy `tasks/_template/` or let an AI coding agent build it with the skill, run the local structural check | [Contributing guide](CONTRIBUTING_EN.md) · [Task contract](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/contribute/task-contract/) |
 | 3. Open the PR | Open a PR from your fork against `main` with the `Proposal:` line in the body; wait for the maintainer label and dual review | [PR template](.github/PULL_REQUEST_TEMPLATE/new_task.md) |
 
@@ -114,35 +110,18 @@ Field-by-field explanations with an annotated full example are on the portal's [
 | [`tasks/`](tasks/) | Merged, official task packages, one directory per task |
 | [`tasks/_template/`](tasks/_template/) | Structurally valid empty package; copy it and replace the placeholders |
 | [`contributor/build-sie-task-package/`](contributor/build-sie-task-package/) | Skill for AI coding agents (Cursor, Codex, Claude Code): contract notes, schemas, Containerfile example and the local checker |
-| [`.github/workflows/`](.github/workflows/) | Actions for structure validation, contribution governance, Proposal review and portal data sync |
+| [`.github/workflows/`](.github/workflows/) | Actions for structure validation, contribution governance and Proposal review; they check format and governance rules only and never run task code |
 | [`.github/scripts/`](.github/scripts/) | Trusted policy scripts used by the Actions, with tests |
 | [`.github/PULL_REQUEST_TEMPLATE/`](.github/PULL_REQUEST_TEMPLATE/) | PR templates for new task, task fix and maintenance |
 | [`attribution.json`](attribution.json) | Authors and reviewers of tasks registered without a public PR |
 | [`CONTRIBUTING_EN.md`](CONTRIBUTING_EN.md) · [`CONTRIBUTING.md`](CONTRIBUTING.md) | Contributor guide |
 | [`MAINTAINERS_EN.md`](MAINTAINERS_EN.md) · [`MAINTAINERS.md`](MAINTAINERS.md) | Maintainer and reviewer guide |
 
-## 🤖 Automated checks
-
-The Actions in this repository check **format, contract and governance rules** only. They never execute candidate task code and never unpack uploaded archives. A green check means the directory loads, the links hold and the reviews are in place; scientific validity and whether the verifier scores correctly are judged by human review.
-
-| Workflow | Trigger | Checks |
-| --- | --- | --- |
-| **Validate task package structure** | PR, push to `main` | Validates the five-part structure and contract fields of the candidate package using the trusted policy from `main` |
-| **Contribution governance** | PR events, comments, reconciliation every 15 minutes | Type label, changed-file scope, Proposal link and current approval, reviewer seats and approvals of the current commit |
-| **Proposal review** | Manual maintainer dispatch | Records the Proposal decision, actor and content fingerprint, and posts next steps to the author |
-| **Update contribution snapshot** | After the workflows above, Discussion changes, hourly | Reads public Proposals, PRs and reviews, generates the portal's contribution data and deploys it |
-
-## 🌐 Portal contribution data
-
-Public contribution data lives in `data/contributions.json` on this repository's **`gh-pages` branch**; it is never written to the protected `main`. **Update contribution snapshot** uses this repository's own `GITHUB_TOKEN` to read public Proposals and PRs, save the JSON and redeploy the existing static site without rebuilding the portal; no cross-repository token is required. After a manual push of site artifacts, run this Action once by hand.
-
-The Pages publishing source must be **GitHub Actions**, with `main` and `gh-pages` permitted by the `github-pages` environment. Website source code lives in the separate website repository.
-
 ## 📮 Get involved
 
 - Have a task in mind: [submit a Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
 - Proposal already approved: read [CONTRIBUTING_EN.md](CONTRIBUTING_EN.md) and open the task PR
-- Learn about the benchmark and current results: [portal](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/) · [leaderboard](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/leaderboard/)
+- Learn about the benchmark: [portal](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/) · [contribute page](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/en/contribute/)
 - Problems with or fixes for an existing task: open a `type:task-fix` PR or comment on the task's Proposal thread
 
 The repository, Proposals, PRs and review records are all public. Commit only redistributable material.

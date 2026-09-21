@@ -8,7 +8,7 @@ A task enters Science Innovation Exam in two steps: a public **Proposal** that i
 
 ## 1. Before you start
 
-You need an **approved Proposal of your own** in this repository. Open one with the bilingual Proposals Discussion form if you have not yet. Bodies, links and comments are public, so do not include sensitive material or anything you cannot publish. When a maintainer approves it, the bot posts a comment with the next steps and a prefilled PR link. Editing an approved Proposal suspends its approval.
+You need an **approved Proposal of your own** in this repository. Open one with the Proposals Discussion form if you have not yet. Bodies, links and comments are public, so do not include sensitive material or anything you cannot publish. When a maintainer approves it, the bot posts a comment with the next steps and a prefilled PR link. Editing an approved Proposal suspends its approval.
 
 One approved Proposal becomes one task package and one PR.
 

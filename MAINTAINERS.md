@@ -6,7 +6,7 @@
 
 ## Proposal 审核
 
-Proposal 以 Proposals 分类中的双语 Discussion 提交，以 GitHub 账号确认身份，不收集私人邮箱。正文、链接和评论均公开。指标补充说明始终显示，自定义、仅原始分和未分类指标时必填；两项授权确认始终必需，修订后同样需要。
+Proposal 以 Proposals 分类中的 Discussion 提交，以 GitHub 账号确认身份，不收集私人邮箱。正文、链接和评论均公开。指标补充说明始终显示，自定义、仅原始分和未分类指标时必填；两项授权确认始终必需，修订后同样需要。
 
 非作者的维护者在 `main` 上运行 **Proposal review**，填写 Discussion 编号、决定及 20–5000 字符的公开理由。Action 校验权限并记录操作者、决定、正文摘要及运行链接。标签仅用于展示，不能作为批准凭据。修改获批正文（包括修改后还原）须重新批准。随后由原作者创建任务 PR，无需回网站绑定。
 
@@ -47,7 +47,7 @@ Proposal 以 Proposals 分类中的双语 Discussion 提交，以 GitHub 账号�
 
 ## 任务维护与官网
 
-Discussion、PR 与 Review 记录是贡献状态的唯一来源。官网每小时构建公开快照并链接回 GitHub；失败时保留上一成功版本。任务与榜单记录由网站的类型化源文件维护。已发布任务出现问题时，在网站 `src/data/task-maintenance.ts` 中记录双语说明、`needs_fix`/`fixing` 状态和修复 PR；修复合并并经维护者核对后才恢复 `active`，其间该任务从两处榜单排除。
+Discussion、PR 与 Review 记录是贡献状态的唯一来源。官网每小时构建公开快照并链接回 GitHub；失败时保留上一成功版本。任务记录由网站的类型化源文件维护。已发布任务出现问题时，在网站 `src/data/task-maintenance.ts` 中记录中英文说明、`needs_fix`/`fixing` 状态和修复 PR；修复合并并经维护者核对后才恢复 `active`。
 
 仅用于验收的 Discussion 和 PR 标题须以 `[ACCEPTANCE]` 开头并带 `acceptance` 标签，始终不进入官网；验收后关闭，不合并虚构任务。双审成功路径须由两位不同的真实审核者完成。
 

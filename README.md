@@ -5,15 +5,11 @@
 **面向研究 Agent 的动态科学基准 · 任务共建仓库**
 
 [![官网](https://img.shields.io/badge/%E5%AE%98%E7%BD%91-Science%20Innovation%20Exam-333399?logo=googlechrome&logoColor=white)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/)
-[![提交 Proposal](https://img.shields.io/badge/%E6%8F%90%E4%BA%A4-Proposal-2ea44f?logo=github&logoColor=white)](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
-[![任务合同](https://img.shields.io/badge/%E4%BB%BB%E5%8A%A1-%E5%90%88%E5%90%8C-8b5cf6)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/contribute/task-contract/)
-[![共建看板](https://img.shields.io/badge/%E5%85%B1%E5%BB%BA-%E7%9C%8B%E6%9D%BF-f59e0b)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/contribute/#contribution-activity)
-[![排行榜](https://img.shields.io/badge/%E6%8E%92%E8%A1%8C%E6%A6%9C-Leaderboard-0ea5e9)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/leaderboard/)
-[![GitHub Stars](https://img.shields.io/github/stars/PrismaX-Team/LiveDiscoveryBench-Tasks?style=social)](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks)
+[![共建页面](https://img.shields.io/badge/%E5%85%B1%E5%BB%BA%E9%A1%B5%E9%9D%A2-%E5%8F%82%E4%B8%8E%E5%85%B1%E5%BB%BA-2ea44f?logo=googlechrome&logoColor=white)](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/contribute/)
 
 **简体中文** | [English](README_EN.md)
 
-[什么是 SIE](#-什么是-science-innovation-exam) · [共建流程](#-共建流程) · [任务包](#-任务包) · [仓库导航](#%EF%B8%8F-仓库导航) · [自动化检查](#-自动化检查) · [官网数据](#-官网共建数据)
+[什么是 SIE](#-什么是-science-innovation-exam) · [共建流程](#-共建流程) · [任务包](#-任务包) · [仓库导航](#%EF%B8%8F-仓库导航)
 
 </div>
 
@@ -21,7 +17,7 @@
 
 Science Innovation Exam（SIE）评测研究 Agent 能否面向**真实、尚未解决的前沿科学问题**，在开放环境中自主调研，提出并验证改进方案，取得可衡量的进展。
 
-本仓库是 SIE 的**任务共建入口**：任务 Proposal 在这里公开讨论和审核，任务包通过 PR 进入基准，审核记录直接沉淀在 GitHub 上，官网的共建数据也由这里生成。你不需要任何额外账号——一个 GitHub 账号就能提交、审核和署名。
+本仓库是 SIE 的**任务共建入口**：任务 Proposal 在这里公开讨论和审核，任务包通过 PR 进入基准，审核记录直接沉淀在 GitHub 上。一个 GitHub 账号就能提交、审核和署名。
 
 ## 🔬 什么是 Science Innovation Exam
 
@@ -42,7 +38,7 @@ Science Innovation Exam（SIE）评测研究 Agent 能否面向**真实、尚未
 </tr>
 </table>
 
-科学标准、任务实例与当前榜单见[官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/)。
+科学标准与任务实例见[官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/)。
 
 ## 🚀 共建流程
 
@@ -70,7 +66,7 @@ flowchart LR
 
 | 步骤 | 你要做的 | 入口 |
 | --- | --- | --- |
-| 1. 提出任务 | 用双语表单描述科学问题、数据来源、指标与授权 | [提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals) |
+| 1. 提出任务 | 描述科学问题、数据来源、指标与授权 | [提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals) |
 | 2. 构建任务包 | Fork 仓库，复制 `tasks/_template/`，或让 AI 编程助手按 Skill 生成，本地跑结构检查 | [共建指南](CONTRIBUTING.md) · [任务合同](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/contribute/task-contract/) |
 | 3. 提交 PR | 从 fork 向 `main` 发起 PR，正文带上 `Proposal:` 行；等待维护者打标签与双审 | [PR 模板](.github/PULL_REQUEST_TEMPLATE/new_task.md) |
 
@@ -114,35 +110,18 @@ tasks/<task-id>/
 | [`tasks/`](tasks/) | 已合并的正式任务包，每个子目录一道任务 |
 | [`tasks/_template/`](tasks/_template/) | 结构合法的空任务包模板，复制后替换占位内容 |
 | [`contributor/build-sie-task-package/`](contributor/build-sie-task-package/) | 给 AI 编程助手（Cursor、Codex、Claude Code）的 Skill：合同说明、schema、Containerfile 示例与本地检查脚本 |
-| [`.github/workflows/`](.github/workflows/) | 结构校验、贡献治理、Proposal 审核与官网数据同步的 Actions |
+| [`.github/workflows/`](.github/workflows/) | 结构校验、贡献治理与 Proposal 审核的 Actions；只检查格式与治理规则，不执行任务代码 |
 | [`.github/scripts/`](.github/scripts/) | Actions 使用的可信策略脚本及其测试 |
 | [`.github/PULL_REQUEST_TEMPLATE/`](.github/PULL_REQUEST_TEMPLATE/) | 新增任务、任务修复、仓库维护三种 PR 模板 |
 | [`attribution.json`](attribution.json) | 未经公开 PR 登记的任务的作者与审核者 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) · [`CONTRIBUTING_EN.md`](CONTRIBUTING_EN.md) | 共建者指南 |
 | [`MAINTAINERS.md`](MAINTAINERS.md) · [`MAINTAINERS_EN.md`](MAINTAINERS_EN.md) | 维护者与审核者指南 |
 
-## 🤖 自动化检查
-
-仓库内的 Actions 只做**格式、合同与治理规则**检查，从不执行候选任务代码，也不解压上传文件。绿灯表示目录能被加载、关联关系成立、审核已到位；科学有效性与 verifier 是否正确评分由人工审核判断。
-
-| Workflow | 触发 | 检查内容 |
-| --- | --- | --- |
-| **Validate task package structure** | PR、push 到 `main` | 用 `main` 上的可信策略校验候选任务包的五部分结构与合同字段 |
-| **Contribution governance** | PR 事件、评论、每 15 分钟对账 | 类型标签、文件改动范围、Proposal 关联与当前批准、双审席位与当前提交的批准 |
-| **Proposal review** | 维护者手动运行 | 记录 Proposal 决定、操作者与正文指纹，向作者发布下一步说明 |
-| **Update contribution snapshot** | 上述流程完成后、Discussion 变化、每小时 | 读取公开 Proposal/PR/审核，生成官网共建数据并部署 |
-
-## 🌐 官网共建数据
-
-公开共建数据保存在本仓库 **`gh-pages` 分支**的 `data/contributions.json`，不写入受保护的 `main`。**Update contribution snapshot** 使用本仓库自己的 `GITHUB_TOKEN` 读取公开 Proposal 与 PR、保存数据并直接部署已有静态网页，不重新构建官网，也无需配置跨仓库 Token。手工推送网页产物后需手动运行一次此 Action。
-
-Pages 发布来源须设置为 **GitHub Actions**，`github-pages` 环境允许 `main` 与 `gh-pages` 分支部署。网站源码保存在独立的网站仓库。
-
 ## 📮 参与
 
 - 想提出一道任务：[提交 Proposal](https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/new?category=proposals)
 - 已有获批 Proposal：阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 并提交任务 PR
-- 了解基准与当前结果：[官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/) · [排行榜](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/leaderboard/)
+- 了解基准：[官网](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/) · [共建页面](https://prismax-team.github.io/LiveDiscoveryBench-Tasks/zh/contribute/)
 - 对现有任务的问题或修复建议：提交 `type:task-fix` PR，或在对应 Proposal 讨论串中留言
 
 仓库、Proposal、PR 与审核记录均公开，请只提交可再分发的材料。
