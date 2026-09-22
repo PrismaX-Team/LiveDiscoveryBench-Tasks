@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T02:05:24.727381Z",
+  "updatedAt": "2026-09-22T02:06:05.374245Z",
   "proposals": [
+    {
+      "number": 14,
+      "title": "[Proposal] 有限标签查询预算下近简并多自旋过渡金属候选的主动发现",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/14",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:05:44Z"
+    },
     {
       "number": 13,
       "title": "[Proposal] 固定电子结构协议下过渡金属配合物自旋能隙的代理预测",
@@ -128,20 +149,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-19T01:08:27Z"
-    },
-    {
-      "number": 14,
-      "title": "[Proposal] 有限标签查询预算下近简并多自旋过渡金属候选的主动发现",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/14",
-      "author": {
-        "name": "solin-del",
-        "githubLogin": "solin-del",
-        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
-        "githubUrl": "https://github.com/solin-del"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-19T00:56:44Z"
     },
     {
       "number": 11,
