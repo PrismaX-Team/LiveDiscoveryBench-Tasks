@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T02:09:20.603708Z",
+  "updatedAt": "2026-09-22T02:31:09.498109Z",
   "proposals": [
     {
       "number": 11,
-      "title": "[Proposal]",
+      "title": "从初始吸附构型预测陌生 MOF 中 CO₂／H₂O 的弛豫吸附能",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/11",
       "author": {
         "name": "Zhy-NJU",
@@ -26,7 +26,7 @@
     },
     {
       "number": 17,
-      "title": "[Proposal] 过渡金属自旋能隙计算的体系特异性密度泛函选择",
+      "title": "过渡金属自旋能隙计算的体系特异性密度泛函选择 / System-Specific DFA Selection for Transition-Metal Spin Splittings",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/17",
       "author": {
         "name": "solin-del",
@@ -47,7 +47,7 @@
     },
     {
       "number": 16,
-      "title": "[Proposal] 有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索",
+      "title": "有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索 / Budgeted Local MECP Search on Fixed Spin-Diabatic Surfaces",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/16",
       "author": {
         "name": "solin-del",
@@ -68,7 +68,7 @@
     },
     {
       "number": 15,
-      "title": "[Proposal] 面向新配体的过渡金属配合物自旋能隙外推预测",
+      "title": "面向新配体的过渡金属配合物自旋能隙外推预测 / Spin-Splitting Prediction for Transition-Metal Complexes with Unseen Ligands",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/15",
       "author": {
         "name": "solin-del",
@@ -89,7 +89,7 @@
     },
     {
       "number": 14,
-      "title": "[Proposal] 有限标签查询预算下近简并多自旋过渡金属候选的主动发现",
+      "title": "有限标签查询预算下近简并多自旋过渡金属候选的主动发现 / Budgeted Active Discovery of Near-Degenerate Spin-State Candidates",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/14",
       "author": {
         "name": "solin-del",
@@ -110,7 +110,7 @@
     },
     {
       "number": 13,
-      "title": "[Proposal] 固定电子结构协议下过渡金属配合物自旋能隙的代理预测",
+      "title": "固定电子结构协议下过渡金属配合物自旋能隙的代理预测 / Spin-Splitting Surrogate Prediction under a Fixed Electronic-Structure Protocol",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/13",
       "author": {
         "name": "solin-del",
@@ -131,7 +131,7 @@
     },
     {
       "number": 12,
-      "title": "[Proposal]",
+      "title": "从反应物与产物结构预测未知有机反应的 DFT 活化势垒",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/12",
       "author": {
         "name": "Zhy-NJU",
@@ -152,7 +152,7 @@
     },
     {
       "number": 10,
-      "title": "[Proposal]",
+      "title": "无机二元晶体的室温总晶格热导率预测",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/10",
       "author": {
         "name": "Zhy-NJU",
@@ -173,7 +173,7 @@
     },
     {
       "number": 9,
-      "title": "[Proposal]",
+      "title": "从未弛豫结构预测新无机晶体的热力学稳定性",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/9",
       "author": {
         "name": "Zhy-NJU",
@@ -194,7 +194,7 @@
     },
     {
       "number": 6,
-      "title": "[Proposal]",
+      "title": "保留关键药效团与口袋相互作用的可合成骨架跃迁",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/6",
       "author": {
         "name": "lulaiao",
@@ -215,7 +215,7 @@
     },
     {
       "number": 5,
-      "title": "[Proposal]",
+      "title": "蛋白质口袋条件下具有可验证合成路径的三维配体设计",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/5",
       "author": {
         "name": "lulaiao",
@@ -236,7 +236,7 @@
     },
     {
       "number": 4,
-      "title": "[Proposal]",
+      "title": "Synthesis-Constrained Multi-Objective Molecular Optimization under a Limited Evaluation Budget",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/4",
       "author": {
         "name": "lulaiao",
