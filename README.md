@@ -56,13 +56,13 @@ flowchart LR
     style A fill:#dcfce7,stroke:#16a34a,stroke-width:3px
     style C fill:#dcfce7,stroke:#16a34a,stroke-width:3px
     style E fill:#dcfce7,stroke:#16a34a,stroke-width:3px
-    style B fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style F fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style G fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style H fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style B fill:#fef3c7,stroke:#f59e0b,stroke-dasharray:4 3
+    style F fill:#f5f3ff,stroke:#8b5cf6,stroke-dasharray:4 3
+    style G fill:#fef3c7,stroke:#f59e0b,stroke-dasharray:4 3
+    style H fill:#e0f2fe,stroke:#0284c7,stroke-dasharray:4 3
 ```
 
-> 带序号的绿色实框 1️⃣ 2️⃣ 3️⃣ 是**你需要做的三步**；灰色虚框由维护者与 CI 完成，无需你操作。
+> 带序号的绿色粗实框 1️⃣ 2️⃣ 3️⃣ 是**你需要做的三步**；虚框由维护者（黄）、CI（紫）与官网（蓝）完成，无需你操作。
 
 | 步骤 | 你要做的 | 入口 |
 | --- | --- | --- |

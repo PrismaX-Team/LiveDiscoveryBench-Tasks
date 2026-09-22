@@ -56,13 +56,13 @@ flowchart LR
     style A fill:#dcfce7,stroke:#16a34a,stroke-width:3px
     style C fill:#dcfce7,stroke:#16a34a,stroke-width:3px
     style E fill:#dcfce7,stroke:#16a34a,stroke-width:3px
-    style B fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style F fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style G fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
-    style H fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style B fill:#fef3c7,stroke:#f59e0b,stroke-dasharray:4 3
+    style F fill:#f5f3ff,stroke:#8b5cf6,stroke-dasharray:4 3
+    style G fill:#fef3c7,stroke:#f59e0b,stroke-dasharray:4 3
+    style H fill:#e0f2fe,stroke:#0284c7,stroke-dasharray:4 3
 ```
 
-> Numbered green solid boxes 1️⃣ 2️⃣ 3️⃣ are **the three steps you do**; grey dashed boxes are handled by maintainers and CI.
+> Numbered green solid boxes 1️⃣ 2️⃣ 3️⃣ are **the three steps you do**; dashed boxes are handled by maintainers (yellow), CI (purple) and the portal (blue).
 
 | Step | What you do | Where |
 | --- | --- | --- |
