@@ -1,8 +1,50 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T02:04:43.315876Z",
+  "updatedAt": "2026-09-22T02:05:24.727381Z",
   "proposals": [
+    {
+      "number": 13,
+      "title": "[Proposal] 固定电子结构协议下过渡金属配合物自旋能隙的代理预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/13",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:05:18Z"
+    },
+    {
+      "number": 12,
+      "title": "[Proposal]",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/12",
+      "author": {
+        "name": "Zhy-NJU",
+        "githubLogin": "Zhy-NJU",
+        "image": "https://avatars.githubusercontent.com/u/324487898?v=4",
+        "githubUrl": "https://github.com/Zhy-NJU"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:04:50Z"
+    },
     {
       "number": 10,
       "title": "[Proposal]",
@@ -100,34 +142,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-19T00:56:44Z"
-    },
-    {
-      "number": 13,
-      "title": "[Proposal] 固定电子结构协议下过渡金属配合物自旋能隙的代理预测",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/13",
-      "author": {
-        "name": "solin-del",
-        "githubLogin": "solin-del",
-        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
-        "githubUrl": "https://github.com/solin-del"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-19T00:50:38Z"
-    },
-    {
-      "number": 12,
-      "title": "[Proposal]",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/12",
-      "author": {
-        "name": "Zhy-NJU",
-        "githubLogin": "Zhy-NJU",
-        "image": "https://avatars.githubusercontent.com/u/324487898?v=4",
-        "githubUrl": "https://github.com/Zhy-NJU"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-18T09:03:34Z"
     },
     {
       "number": 11,
