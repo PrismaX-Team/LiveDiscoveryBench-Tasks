@@ -1,8 +1,50 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T02:06:05.374245Z",
+  "updatedAt": "2026-09-22T02:06:53.850821Z",
   "proposals": [
+    {
+      "number": 16,
+      "title": "[Proposal] 有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/16",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:06:36Z"
+    },
+    {
+      "number": 15,
+      "title": "[Proposal] 面向新配体的过渡金属配合物自旋能隙外推预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/15",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:06:13Z"
+    },
     {
       "number": 14,
       "title": "[Proposal] 有限标签查询预算下近简并多自旋过渡金属候选的主动发现",
@@ -120,35 +162,7 @@
       },
       "reviewers": [],
       "status": "submitted",
-      "updatedAt": "2026-09-19T15:52:26Z"
-    },
-    {
-      "number": 16,
-      "title": "[Proposal] 有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/16",
-      "author": {
-        "name": "solin-del",
-        "githubLogin": "solin-del",
-        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
-        "githubUrl": "https://github.com/solin-del"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-19T01:21:59Z"
-    },
-    {
-      "number": 15,
-      "title": "[Proposal] 面向新配体的过渡金属配合物自旋能隙外推预测",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/15",
-      "author": {
-        "name": "solin-del",
-        "githubLogin": "solin-del",
-        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
-        "githubUrl": "https://github.com/solin-del"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-19T01:08:27Z"
+      "updatedAt": "2026-09-22T02:06:59Z"
     },
     {
       "number": 11,
