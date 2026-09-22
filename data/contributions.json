@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T01:40:06.812819Z",
+  "updatedAt": "2026-09-22T02:03:57.841678Z",
   "proposals": [
+    {
+      "number": 9,
+      "title": "[Proposal]",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/9",
+      "author": {
+        "name": "Zhy-NJU",
+        "githubLogin": "Zhy-NJU",
+        "image": "https://avatars.githubusercontent.com/u/324487898?v=4",
+        "githubUrl": "https://github.com/Zhy-NJU"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:03:45Z"
+    },
     {
       "number": 17,
       "title": "[Proposal] 过渡金属自旋能隙计算的体系特异性密度泛函选择",
@@ -114,20 +135,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-18T08:55:31Z"
-    },
-    {
-      "number": 9,
-      "title": "[Proposal]",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/9",
-      "author": {
-        "name": "Zhy-NJU",
-        "githubLogin": "Zhy-NJU",
-        "image": "https://avatars.githubusercontent.com/u/324487898?v=4",
-        "githubUrl": "https://github.com/Zhy-NJU"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-18T08:51:34Z"
     },
     {
       "number": 6,
