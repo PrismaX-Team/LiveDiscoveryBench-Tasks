@@ -49,7 +49,7 @@ flowchart LR
     A["1️⃣ 📝 Submit Proposal<br/>(Discussion)"] --> B["🧑‍🔬 Domain expert review"]
     B -->|approved| C["2️⃣ 🧩 Build task package<br/>template / AI skill"]
     C --> E["3️⃣ 🔀 Open task PR"]
-    E --> F["🤖 CI structure check"]
+    E --> F["🤖 Automated checks"]
     F --> G["👥 Dual review<br/>domain + technical"]
     G -->|merged| H["🌐 Live on portal, credited"]
 
