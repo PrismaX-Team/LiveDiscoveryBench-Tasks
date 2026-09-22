@@ -9,7 +9,7 @@
 
 **简体中文** | [English](README_EN.md)
 
-[什么是 SIE](#-什么是-science-innovation-exam) · [共建流程](#-共建流程) · [任务包](#-任务包) · [仓库导航](#%EF%B8%8F-仓库导航)
+[什么是 SIE](#-什么是-science-innovation-exam) · [共建流程](#-共建流程) · [任务包](#-任务包) · [仓库导航](#%EF%B8%8F-仓库导航) · [交流群](#-共建者交流群)
 
 </div>
 
@@ -125,3 +125,11 @@ tasks/<task-id>/
 - 对现有任务的问题或修复建议：提交 `type:task-fix` PR，或在对应 Proposal 讨论串中留言
 
 仓库、Proposal、PR 与审核记录均公开，请只提交可再分发的材料。
+
+## 💬 共建者交流群
+
+欢迎扫码加入 **SIE 共建者交流群**，与维护者和其他共建者讨论任务选题、任务包构建和审核中遇到的问题。
+
+<p align="center"><img src="community/wechat-group.jpg" alt="SIE 共建者交流群微信二维码" width="280"></p>
+
+微信群二维码会定期过期。如果扫码提示已失效，请发邮件至 **vaporhugz@gmail.com**，我们会发送最新的入群方式。

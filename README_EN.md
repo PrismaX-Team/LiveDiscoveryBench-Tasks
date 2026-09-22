@@ -9,7 +9,7 @@
 
 [简体中文](README.md) | **English**
 
-[What is SIE](#-what-is-science-innovation-exam) · [How to contribute](#-how-to-contribute) · [Task package](#-task-package) · [Repository map](#%EF%B8%8F-repository-map)
+[What is SIE](#-what-is-science-innovation-exam) · [How to contribute](#-how-to-contribute) · [Task package](#-task-package) · [Repository map](#%EF%B8%8F-repository-map) · [Community](#-contributor-community)
 
 </div>
 
@@ -125,3 +125,11 @@ Field-by-field explanations with an annotated full example are on the portal's [
 - Problems with or fixes for an existing task: open a `type:task-fix` PR or comment on the task's Proposal thread
 
 The repository, Proposals, PRs and review records are all public. Commit only redistributable material.
+
+## 💬 Contributor community
+
+Scan the code to join the **SIE contributor WeChat group** and discuss task ideas, task-package building and review questions with maintainers and other contributors.
+
+<p align="center"><img src="community/wechat-group.jpg" alt="WeChat QR code for the SIE contributor group" width="280"></p>
+
+WeChat group codes expire periodically. If the code no longer works, email **vaporhugz@gmail.com** and we will send you the current invitation.
