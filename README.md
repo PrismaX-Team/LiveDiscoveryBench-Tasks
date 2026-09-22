@@ -46,23 +46,23 @@ Science Innovation Exam（SIE）评测研究 Agent 能否面向**真实、尚未
 
 ```mermaid
 flowchart LR
-    A["📝 提交 Proposal<br/>(Discussion)"] --> B["🧑‍🔬 领域专家审核"]
-    B -->|获批| C["🧩 构建任务包<br/>模板 / AI Skill"]
-    C --> D["✅ 本地检查<br/>check_package.py"]
-    D --> E["🔀 提交任务 PR"]
-    E --> F["🤖 CI 结构与治理检查"]
+    A["1️⃣ 📝 提交 Proposal<br/>(Discussion)"] --> B["🧑‍🔬 领域专家审核"]
+    B -->|获批| C["2️⃣ 🧩 构建任务包<br/>模板 / AI Skill"]
+    C --> E["3️⃣ 🔀 提交任务 PR"]
+    E --> F["🤖 CI 结构检查"]
     F --> G["👥 双审<br/>领域 + 技术"]
     G -->|合并| H["🌐 官网上线并署名"]
 
-    style A fill:#e0f2fe,stroke:#0284c7
-    style B fill:#fef3c7,stroke:#f59e0b
-    style C fill:#f0fdf4,stroke:#22c55e
-    style D fill:#f0fdf4,stroke:#22c55e
-    style E fill:#f5f3ff,stroke:#8b5cf6
-    style F fill:#f5f3ff,stroke:#8b5cf6
-    style G fill:#fef3c7,stroke:#f59e0b
-    style H fill:#e0f2fe,stroke:#0284c7
+    style A fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style C fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style E fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style B fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style F fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style G fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style H fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
 ```
+
+> 带序号的绿色实框 1️⃣ 2️⃣ 3️⃣ 是**你需要做的三步**；灰色虚框由维护者与 CI 完成，无需你操作。
 
 | 步骤 | 你要做的 | 入口 |
 | --- | --- | --- |

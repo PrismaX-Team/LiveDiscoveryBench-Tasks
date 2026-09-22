@@ -46,23 +46,23 @@ A task enters SIE in two steps: a public **Proposal** reviewed by a domain exper
 
 ```mermaid
 flowchart LR
-    A["📝 Submit Proposal<br/>(Discussion)"] --> B["🧑‍🔬 Domain expert review"]
-    B -->|approved| C["🧩 Build task package<br/>template / AI skill"]
-    C --> D["✅ Local check<br/>check_package.py"]
-    D --> E["🔀 Open task PR"]
-    E --> F["🤖 CI structure & governance"]
+    A["1️⃣ 📝 Submit Proposal<br/>(Discussion)"] --> B["🧑‍🔬 Domain expert review"]
+    B -->|approved| C["2️⃣ 🧩 Build task package<br/>template / AI skill"]
+    C --> E["3️⃣ 🔀 Open task PR"]
+    E --> F["🤖 CI structure check"]
     F --> G["👥 Dual review<br/>domain + technical"]
     G -->|merged| H["🌐 Live on portal, credited"]
 
-    style A fill:#e0f2fe,stroke:#0284c7
-    style B fill:#fef3c7,stroke:#f59e0b
-    style C fill:#f0fdf4,stroke:#22c55e
-    style D fill:#f0fdf4,stroke:#22c55e
-    style E fill:#f5f3ff,stroke:#8b5cf6
-    style F fill:#f5f3ff,stroke:#8b5cf6
-    style G fill:#fef3c7,stroke:#f59e0b
-    style H fill:#e0f2fe,stroke:#0284c7
+    style A fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style C fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style E fill:#dcfce7,stroke:#16a34a,stroke-width:3px
+    style B fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style F fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style G fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
+    style H fill:#f8fafc,stroke:#94a3b8,stroke-dasharray:4 3
 ```
+
+> Numbered green solid boxes 1️⃣ 2️⃣ 3️⃣ are **the three steps you do**; grey dashed boxes are handled by maintainers and CI.
 
 | Step | What you do | Where |
 | --- | --- | --- |
