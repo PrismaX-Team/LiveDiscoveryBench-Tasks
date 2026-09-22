@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T16:26:45.528037Z",
+  "updatedAt": "2026-09-22T16:28:20.255798Z",
   "proposals": [
     {
       "number": 11,
@@ -259,7 +259,7 @@
   "pullRequests": [
     {
       "number": 8,
-      "title": "[New Task] Synthesis-Constrained Multi-Objective Molecular Optimization",
+      "title": "[task] synthesis-constrained-molecular-optimization",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/pull/8",
       "author": {
         "name": "lulaiao",
@@ -292,7 +292,7 @@
           "approved": false
         }
       ],
-      "updatedAt": "2026-09-22T16:26:11Z"
+      "updatedAt": "2026-09-22T16:27:39Z"
     }
   ],
   "tasks": [
