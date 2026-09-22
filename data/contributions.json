@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-22T02:06:53.850821Z",
+  "updatedAt": "2026-09-22T02:07:39.181821Z",
   "proposals": [
+    {
+      "number": 17,
+      "title": "[Proposal] 过渡金属自旋能隙计算的体系特异性密度泛函选择",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/17",
+      "author": {
+        "name": "solin-del",
+        "githubLogin": "solin-del",
+        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
+        "githubUrl": "https://github.com/solin-del"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-22T02:06:59Z"
+    },
     {
       "number": 16,
       "title": "[Proposal] 有限能量—梯度查询预算下双自旋势能面的局部最低能量交叉点搜索",
@@ -151,20 +172,6 @@
       "updatedAt": "2026-09-22T02:03:45Z"
     },
     {
-      "number": 17,
-      "title": "[Proposal] 过渡金属自旋能隙计算的体系特异性密度泛函选择",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/17",
-      "author": {
-        "name": "solin-del",
-        "githubLogin": "solin-del",
-        "image": "https://avatars.githubusercontent.com/u/248100750?v=4",
-        "githubUrl": "https://github.com/solin-del"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-22T02:06:59Z"
-    },
-    {
       "number": 11,
       "title": "[Proposal]",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/11",
@@ -255,7 +262,7 @@
       },
       "kind": "new_task",
       "state": "open",
-      "gate": "pending",
+      "gate": "failure",
       "assignments": [
         {
           "role": "domain",
