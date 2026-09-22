@@ -376,6 +376,17 @@ def identity(user):
         image = _avatars[login]
     return {"name": login, "githubLogin": login, "image": image, "githubUrl": f"https://github.com/{login}"}
 
+def proposal_title(row):
+    """Portal display title: the form's Task title field, else the Discussion title without the form prefix."""
+    try:
+        form = fields(row.get("body") or "")
+    except ValueError:
+        form = {}
+    title = form.get("Task title", "").splitlines()[0].strip() if form.get("Task title") else ""
+    if title and title != "_No response_":
+        return title
+    return re.sub(r"^\[Proposal\]\s*", "", row["title"]).strip() or row["title"]
+
 def acceptance(row):
     return row["title"].startswith("[ACCEPTANCE]") or any(label["name"] == "acceptance" for label in (row["labels"]["nodes"] if isinstance(row["labels"], dict) else row["labels"]))
 
@@ -391,7 +402,7 @@ def snapshot():
             if acceptance(row):
                 continue
             state, record = proposal_status(row)
-            result["proposals"].append({"number": row["number"], "title": row["title"], "url": row["url"], "author": identity(row["author"]), "reviewers": [identity({"login": record["actor"]})] if record else [], "status": state, "updatedAt": row["updatedAt"]})
+            result["proposals"].append({"number": row["number"], "title": proposal_title(row), "url": row["url"], "author": identity(row["author"]), "reviewers": [identity({"login": record["actor"]})] if record else [], "status": state, "updatedAt": row["updatedAt"]})
         if not page["pageInfo"]["hasNextPage"]:
             break
         cursor = page["pageInfo"]["endCursor"]

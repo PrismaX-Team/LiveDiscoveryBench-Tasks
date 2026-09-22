@@ -110,6 +110,10 @@ class GovernanceTests(unittest.TestCase):
         g._run_cache.clear()
         with patch.object(g,'api',side_effect=RuntimeError('unavailable')):
             with self.assertRaises(RuntimeError): g.decision_record(row)
+    def test_proposal_title_prefers_form_field(self):
+        self.assertEqual(g.proposal_title(dict(title='[Proposal]', body='### Name\n\nA\n\n### Task title\n\nPredicting stability\n\n### Scientific domain\n\nX\n')), 'Predicting stability')
+        self.assertEqual(g.proposal_title(dict(title='[Proposal] Typed title', body='### Task title\n\n_No response_\n')), 'Typed title')
+        self.assertEqual(g.proposal_title(dict(title='[Proposal]', body='')), '[Proposal]')
     def test_acceptance_excluded(self):
         self.assertTrue(g.acceptance(dict(title='[ACCEPTANCE] Test',labels=[])))
         self.assertTrue(g.acceptance(dict(title='Test',labels={'nodes':[{'name':'acceptance'}]})))
