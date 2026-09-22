@@ -13,6 +13,11 @@ METRIC_TYPES = {
     "upper_residual_log", "lower_residual_log", "power_maximize", "power_minimize",
     "monotone_piecewise_maximize", "monotone_piecewise_minimize", "custom", "raw_only",
 }
+# Linear and log-ratio conversions take their anchors from meta.baseline; these need explicit parameters.
+TRANSFORM_REQUIRED_TYPES = {
+    "upper_residual_log", "lower_residual_log", "power_maximize", "power_minimize",
+    "monotone_piecewise_maximize", "monotone_piecewise_minimize", "custom",
+}
 
 
 def require(condition, message):
@@ -62,10 +67,8 @@ def check_package(root):
         require(isinstance(instruction[key], list), f"{key} must be an array")
     require(all(isinstance(item, str) for item in instruction["requirement"]), "requirement must contain strings")
     require(isinstance(instruction["limitation"], dict), "limitation must be an object")
-    submission = instruction["submission"]
-    require(isinstance(submission, dict), "submission must be an object")
-    artifacts = submission.get("artifacts")
-    require(isinstance(artifacts, list) and artifacts, "At least one submission artifact is required")
+    artifacts = instruction["submission"]
+    require(isinstance(artifacts, list) and artifacts, "submission must be a nonempty array of artifacts")
     paths = set()
     for artifact in artifacts:
         require(isinstance(artifact, dict), "Artifact must be an object")
@@ -93,19 +96,20 @@ def check_package(root):
         require(file.is_file() and file.stat().st_size > 0, "Missing nonempty Containerfile")
 
     meta = read_object(root / "meta.json")
-    for key in ("id", "title", "domain", "source_id"):
+    for key in ("id", "title", "domain"):
         require(isinstance(meta.get(key), str) and meta[key].strip(), f"Missing meta.{key}")
     require(re.fullmatch(r"[a-z0-9][a-z0-9._-]{0,127}", meta["id"]), "Invalid task ID")
     require(root.name == "_template" or meta["id"] == root.name, "Task ID must match directory")
-    require(re.fullmatch(r"[a-z][a-z0-9+.-]*:[^\s]+", meta["source_id"]), "Invalid source_id namespace")
-    require(isinstance(meta.get("data_sources"), list), "data_sources must be an array")
+    require(isinstance(meta.get("task_sources"), list), "task_sources must be an array")
     metric = meta.get("metric")
     require(isinstance(metric, dict) and isinstance(metric.get("description"), str) and metric["description"].strip(),
             "Metric description required")
     require("type" in metric and (metric["type"] is None or isinstance(metric["type"], str) and metric["type"] in METRIC_TYPES),
             "Invalid metric.type")
-    if metric["type"] not in (None, "raw_only"):
-        require(isinstance(metric.get("transform"), dict), "Classified conversions require metric.transform")
+    if metric["type"] in (None, "raw_only"):
+        require("transform" not in metric, "Unclassified or raw_only metrics must not carry metric.transform")
+    elif metric["type"] in TRANSFORM_REQUIRED_TYPES:
+        require(isinstance(metric.get("transform"), dict), f"metric.type {metric['type']} requires metric.transform")
     if metric["type"] == "custom":
         require((root / "verifier/matrix/transform.py").is_file(), "Custom conversion requires verifier/matrix/transform.py")
 

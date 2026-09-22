@@ -110,6 +110,10 @@ class GovernanceTests(unittest.TestCase):
         g._run_cache.clear()
         with patch.object(g,'api',side_effect=RuntimeError('unavailable')):
             with self.assertRaises(RuntimeError): g.decision_record(row)
+    def test_proposal_title_prefers_form_field(self):
+        self.assertEqual(g.proposal_title(dict(title='[Proposal]', body='### Name\n\nA\n\n### Task title\n\nPredicting stability\n\n### Scientific domain\n\nX\n')), 'Predicting stability')
+        self.assertEqual(g.proposal_title(dict(title='[Proposal] Typed title', body='### Task title\n\n_No response_\n')), 'Typed title')
+        self.assertEqual(g.proposal_title(dict(title='[Proposal]', body='')), '[Proposal]')
     def test_acceptance_excluded(self):
         self.assertTrue(g.acceptance(dict(title='[ACCEPTANCE] Test',labels=[])))
         self.assertTrue(g.acceptance(dict(title='Test',labels={'nodes':[{'name':'acceptance'}]})))
@@ -144,5 +148,18 @@ class GovernanceTests(unittest.TestCase):
             with patch.object(g, 'api', return_value={**run, 'run_attempt':attempt, 'triggering_actor':{'login':actor}}):
                 self.assertEqual(g.decision_record(row), expected)
         g._run_cache.clear()
+    def test_unlabeled_pr_is_pending_not_failure(self):
+        with self.assertRaises(g.Pending): g.confirmed_kind({'labels': [], 'number': 1})
+        with patch.object(g, 'rest_pages', return_value=[]):
+            with self.assertRaises(ValueError) as caught: g.confirmed_kind({'labels': [{'name':'type:new-task'},{'name':'type:task-fix'}], 'number': 1})
+        self.assertNotIsInstance(caught.exception, g.Pending)
+    def test_identity_resolves_avatar_for_login_only_records(self):
+        with patch.object(g, 'api', return_value={'avatar_url': 'https://avatars.example/1'}) as mocked:
+            self.assertEqual(g.identity({'login': 'someone'})['image'], 'https://avatars.example/1')
+            self.assertEqual(g.identity({'login': 'someone'})['image'], 'https://avatars.example/1')
+            self.assertEqual(mocked.call_count, 1)
+            self.assertEqual(g.identity({'login': 'other', 'avatarUrl': 'https://avatars.example/2'})['image'], 'https://avatars.example/2')
+        self.assertIsNone(g.identity(None)['image'])
+        g._avatars.clear()
 
 if __name__ == '__main__': unittest.main()
