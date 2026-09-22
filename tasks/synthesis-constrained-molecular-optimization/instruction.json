@@ -32,30 +32,47 @@
       "description": "Data authorship, redistribution basis, dependency attribution, and scientific limitations."
     }
   ],
-  "submission": {
-    "artifacts": [
-      {
-        "path": "candidates.csv",
-        "format": "CSV",
-        "description": "Per-task final Top-10 materialization with exact header task_id,rank,canonical_smiles,route_id,predicted_qed,predicted_logp,predicted_tpsa,predicted_utility.",
-        "has_template": true
-      },
-      {
-        "path": "routes.json",
-        "format": "JSON",
-        "description": "Exactly one canonical, previously evaluated linear route for every row in candidates.csv.",
-        "has_template": true
-      },
-      {
-        "path": "evidence.jsonl",
-        "format": "JSON Lines",
-        "description": "Every charged validation evaluation object copied unchanged in global call_index order, including failed route attempts and repairs.",
-        "has_template": true
-      }
-    ]
-  },
+  "submission": [
+    {
+      "path": "candidates.csv",
+      "format": "CSV",
+      "description": "Per-task final Top-10 materialization with exact header task_id,rank,canonical_smiles,route_id,predicted_qed,predicted_logp,predicted_tpsa,predicted_utility.",
+      "has_template": true
+    },
+    {
+      "path": "routes.json",
+      "format": "JSON",
+      "description": "Exactly one canonical, previously evaluated linear route for every row in candidates.csv.",
+      "has_template": true
+    },
+    {
+      "path": "evidence.jsonl",
+      "format": "JSON Lines",
+      "description": "Every charged validation evaluation object copied unchanged in global call_index order, including failed route attempts and repairs.",
+      "has_template": true
+    }
+  ],
   "environment": [
-    "Linux/amd64 container from a digest-pinned official CPython 3.11.16 base, with RDKit 2025.09.6, NumPy 2.4.6, and Pillow 12.3.0 installed at build time from hash-locked x86_64 wheels. The verifier itself performs no network or credential access; the evaluation runner must enforce network isolation."
+    {
+      "name": "Python",
+      "version": "3.11.16",
+      "description": "Linux/amd64 runtime from the digest-pinned official CPython slim-bookworm base image."
+    },
+    {
+      "name": "RDKit",
+      "version": "2025.09.6",
+      "description": "Cheminformatics toolkit installed from a hash-locked x86_64 wheel for standardization, reaction replay, descriptors, fingerprints, and scaffold checks."
+    },
+    {
+      "name": "NumPy",
+      "version": "2.4.6",
+      "description": "Numerical dependency installed from a hash-locked x86_64 wheel."
+    },
+    {
+      "name": "Pillow",
+      "version": "12.3.0",
+      "description": "Image-processing dependency installed from a hash-locked x86_64 wheel."
+    }
   ],
   "requirement": [
     "Use only the task-provided starting-material identifiers and reaction-template identifiers in submitted routes; submit no executable code or archives.",

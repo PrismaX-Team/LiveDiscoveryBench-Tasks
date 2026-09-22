@@ -2,8 +2,7 @@
   "id": "synthesis-constrained-molecular-optimization",
   "title": "Synthesis-Constrained Multi-Objective Molecular Optimization under a Limited Evaluation Budget",
   "domain": "AI for Drug Discovery / Computational Chemistry / Molecular Optimization / Scientific Agents",
-  "source_id": "expert:github-discussion-4@sha256-4a7e81ed80ba4582f994c5cacf7afaf5aa1140c9e521993bd416bf09243249ff",
-  "data_sources": [
+  "task_sources": [
     {
       "name": "Approved LiveDiscoveryBench Proposal #4 and task-authored benchmark fixtures",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/4"
