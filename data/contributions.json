@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-25T04:17:50.610259Z",
+  "updatedAt": "2026-09-25T04:27:08.109622Z",
   "proposals": [
     {
       "number": 20,
@@ -15,7 +15,7 @@
       },
       "reviewers": [],
       "status": "submitted",
-      "updatedAt": "2026-09-25T04:16:32Z"
+      "updatedAt": "2026-09-25T04:26:59Z"
     },
     {
       "number": 19,
