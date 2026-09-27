@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-26T23:35:15.757564Z",
+  "updatedAt": "2026-09-27T01:33:23.469311Z",
   "proposals": [
+    {
+      "number": 21,
+      "title": "Budget-constrained trajectory allocation for LLM evolutionary search",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/21",
+      "author": {
+        "name": "xingsixue123",
+        "githubLogin": "xingsixue123",
+        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
+        "githubUrl": "https://github.com/xingsixue123"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-27T01:33:13Z"
+    },
     {
       "number": 20,
       "title": "Clinical Trial Failure Reasoning",
