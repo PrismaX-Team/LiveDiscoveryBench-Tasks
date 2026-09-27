@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-27T01:46:58.097594Z",
+  "updatedAt": "2026-09-27T03:10:46.733737Z",
   "proposals": [
+    {
+      "number": 22,
+      "title": "固定 Au–Ti–O 参考数据上的能量与原子力预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/22",
+      "author": {
+        "name": "njuywj",
+        "githubLogin": "njuywj",
+        "image": "https://avatars.githubusercontent.com/u/334367665?v=4",
+        "githubUrl": "https://github.com/njuywj"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-09-27T03:10:36Z"
+    },
     {
       "number": 21,
       "title": "Budget-constrained trajectory allocation for LLM evolutionary search",
