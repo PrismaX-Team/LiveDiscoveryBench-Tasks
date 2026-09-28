@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-28T02:25:25.449660Z",
+  "updatedAt": "2026-09-28T02:26:18.603028Z",
   "proposals": [
+    {
+      "number": 19,
+      "title": "Risk-controlled selective gating for cross-session motor-imagery BCI",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/19",
+      "author": {
+        "name": "xingsixue123",
+        "githubLogin": "xingsixue123",
+        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
+        "githubUrl": "https://github.com/xingsixue123"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-28T02:25:31Z"
+    },
     {
       "number": 22,
       "title": "固定 Au–Ti–O 参考数据上的能量与原子力预测",
@@ -44,20 +65,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-25T04:29:49Z"
-    },
-    {
-      "number": 19,
-      "title": "Risk-controlled selective gating for cross-session motor-imagery BCI",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/19",
-      "author": {
-        "name": "xingsixue123",
-        "githubLogin": "xingsixue123",
-        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
-        "githubUrl": "https://github.com/xingsixue123"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-25T03:26:48Z"
     },
     {
       "number": 11,
