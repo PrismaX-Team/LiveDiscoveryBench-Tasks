@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-28T01:38:25.454373Z",
+  "updatedAt": "2026-09-28T02:25:25.449660Z",
   "proposals": [
     {
       "number": 22,
@@ -33,7 +33,7 @@
     },
     {
       "number": 20,
-      "title": "Clinical Trial Failure Reasoning",
+      "title": "Clinical Trial Protocols Failure Prediction",
       "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/20",
       "author": {
         "name": "xingsixue123",
@@ -325,7 +325,7 @@
       },
       "kind": "new_task",
       "state": "open",
-      "gate": "failure",
+      "gate": "pending",
       "assignments": [
         {
           "role": "domain",
@@ -362,7 +362,7 @@
       },
       "kind": "new_task",
       "state": "open",
-      "gate": "failure",
+      "gate": "pending",
       "assignments": [
         {
           "role": "domain",
