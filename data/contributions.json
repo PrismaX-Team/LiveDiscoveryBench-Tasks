@@ -1,8 +1,50 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-28T02:26:18.603028Z",
+  "updatedAt": "2026-09-28T02:27:05.194354Z",
   "proposals": [
+    {
+      "number": 21,
+      "title": "Budget-constrained trajectory allocation for LLM evolutionary search",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/21",
+      "author": {
+        "name": "xingsixue123",
+        "githubLogin": "xingsixue123",
+        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
+        "githubUrl": "https://github.com/xingsixue123"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-28T02:26:54Z"
+    },
+    {
+      "number": 20,
+      "title": "Clinical Trial Protocols Failure Prediction",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/20",
+      "author": {
+        "name": "xingsixue123",
+        "githubLogin": "xingsixue123",
+        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
+        "githubUrl": "https://github.com/xingsixue123"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-28T02:26:22Z"
+    },
     {
       "number": 19,
       "title": "Risk-controlled selective gating for cross-session motor-imagery BCI",
@@ -37,34 +79,6 @@
       "reviewers": [],
       "status": "submitted",
       "updatedAt": "2026-09-27T03:10:36Z"
-    },
-    {
-      "number": 21,
-      "title": "Budget-constrained trajectory allocation for LLM evolutionary search",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/21",
-      "author": {
-        "name": "xingsixue123",
-        "githubLogin": "xingsixue123",
-        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
-        "githubUrl": "https://github.com/xingsixue123"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-27T01:33:13Z"
-    },
-    {
-      "number": 20,
-      "title": "Clinical Trial Protocols Failure Prediction",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/20",
-      "author": {
-        "name": "xingsixue123",
-        "githubLogin": "xingsixue123",
-        "image": "https://avatars.githubusercontent.com/u/99207361?u=ddb779d80efeab6e3078a9d5580c397423b23182&v=4",
-        "githubUrl": "https://github.com/xingsixue123"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-25T04:29:49Z"
     },
     {
       "number": 11,
