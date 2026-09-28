@@ -1,8 +1,29 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-09-28T02:27:05.194354Z",
+  "updatedAt": "2026-09-28T02:28:08.175328Z",
   "proposals": [
+    {
+      "number": 22,
+      "title": "固定 Au–Ti–O 参考数据上的能量与原子力预测",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/22",
+      "author": {
+        "name": "njuywj",
+        "githubLogin": "njuywj",
+        "image": "https://avatars.githubusercontent.com/u/334367665?v=4",
+        "githubUrl": "https://github.com/njuywj"
+      },
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-09-28T02:27:24Z"
+    },
     {
       "number": 21,
       "title": "Budget-constrained trajectory allocation for LLM evolutionary search",
@@ -65,20 +86,6 @@
       ],
       "status": "approved",
       "updatedAt": "2026-09-28T02:25:31Z"
-    },
-    {
-      "number": 22,
-      "title": "固定 Au–Ti–O 参考数据上的能量与原子力预测",
-      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/22",
-      "author": {
-        "name": "njuywj",
-        "githubLogin": "njuywj",
-        "image": "https://avatars.githubusercontent.com/u/334367665?v=4",
-        "githubUrl": "https://github.com/njuywj"
-      },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-09-27T03:10:36Z"
     },
     {
       "number": 11,
@@ -346,7 +353,7 @@
       },
       "kind": "new_task",
       "state": "open",
-      "gate": "pending",
+      "gate": "failure",
       "assignments": [
         {
           "role": "domain",
@@ -383,7 +390,7 @@
       },
       "kind": "new_task",
       "state": "open",
-      "gate": "pending",
+      "gate": "failure",
       "assignments": [
         {
           "role": "domain",
