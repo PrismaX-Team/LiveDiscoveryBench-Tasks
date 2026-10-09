@@ -1,8 +1,22 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-10-09T02:17:12.771006Z",
+  "updatedAt": "2026-10-09T02:43:12.443857Z",
   "proposals": [
+    {
+      "number": 23,
+      "title": "跨靶标泛化的核酸适配体计算筛选 （Cross-target generalization in computational aptamer screening）",
+      "url": "https://github.com/PrismaX-Team/LiveDiscoveryBench-Tasks/discussions/23",
+      "author": {
+        "name": "Rick-zhuang",
+        "githubLogin": "Rick-zhuang",
+        "image": "https://avatars.githubusercontent.com/u/247126661?v=4",
+        "githubUrl": "https://github.com/Rick-zhuang"
+      },
+      "reviewers": [],
+      "status": "submitted",
+      "updatedAt": "2026-10-09T02:43:04Z"
+    },
     {
       "number": 22,
       "title": "固定 Au–Ti–O 参考数据上的能量与原子力预测",
