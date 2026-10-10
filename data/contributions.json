@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "repository": "PrismaX-Team/LiveDiscoveryBench-Tasks",
-  "updatedAt": "2026-10-10T00:59:39.557375Z",
+  "updatedAt": "2026-10-10T02:58:00.367794Z",
   "proposals": [
     {
       "number": 23,
@@ -13,9 +13,16 @@
         "image": "https://avatars.githubusercontent.com/u/247126661?v=4",
         "githubUrl": "https://github.com/Rick-zhuang"
       },
-      "reviewers": [],
-      "status": "submitted",
-      "updatedAt": "2026-10-09T02:43:04Z"
+      "reviewers": [
+        {
+          "name": "vaporhug",
+          "githubLogin": "vaporhug",
+          "image": "https://avatars.githubusercontent.com/u/118320894?v=4",
+          "githubUrl": "https://github.com/vaporhug"
+        }
+      ],
+      "status": "approved",
+      "updatedAt": "2026-10-10T02:57:45Z"
     },
     {
       "number": 22,
